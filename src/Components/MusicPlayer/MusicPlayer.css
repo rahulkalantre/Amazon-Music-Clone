@@ -1,0 +1,53 @@
+.music-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(15,17,17,.6);
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0px;
+}
+
+.song-details {
+  display: flex;
+  align-items: center;
+}
+
+.album-cover {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.song-heading {
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.song-info {
+  /* margin: 0;
+  font-size: 18px; */
+  color: white;
+}
+
+.control-icon {
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.play-pause {
+  color: white;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  display: flex;
+  color: white;
+}
