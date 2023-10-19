@@ -29,8 +29,9 @@ const AlbumDetailsPage = () => {
         );
         const json = await response.json();
         console.log(json);
-        setData(json.data.songs);
-        setSongsData(json.data?.songs || []);
+        let romanticSongs = json.data.songs.filter(item => item.mood === "romantic")
+        setData(romanticSongs);
+        // setSongsData(json.data?.songs || []);
         // setHeading(json.data[0].mood)
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -46,7 +47,7 @@ const AlbumDetailsPage = () => {
           <img src={data?.thumbnail} alt="image-new" className="adp-image" />
           <div className="content">
             <h6 className="adp-h6-tag">PLAYLIST</h6>
-            <h1 className="adp-heading">50 Most Played: Hindi</h1>
+            <h1 className="adp-heading">{data[0]?.mood.toUpperCase()} SONGS</h1>
             <h5 className="adp-h5-tag">Curated by Amazon Music</h5>
             <p className="adp-p-tag">{data?.description}</p>
             <br />
@@ -71,8 +72,8 @@ const AlbumDetailsPage = () => {
           data.map((item, index) => (
             <div
               className="sdp-image-card"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={() => setIsHovered(index)}
+              onMouseLeave={() => setIsHovered(-1)}
             >
               <div className="sdp-image-container" key={index}>
                 <div className="sdp-image-number">{index}</div>
@@ -82,7 +83,7 @@ const AlbumDetailsPage = () => {
                   className="sdp-image"
                 />
                 {/* {console.log(item.thumbnail)} */}
-                {isHovered && (
+                {(isHovered === index) && (
                   <div className="play-icon">
                     <AiOutlinePlayCircle className="play-icon-inner" />
                   </div>

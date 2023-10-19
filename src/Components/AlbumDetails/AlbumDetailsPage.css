@@ -159,8 +159,8 @@
 .play-icon {
   position: absolute;
   top: 50%;
-  left: 14%;
-  transform: translate(-50%, -50%);
+  left: 14% !important;
+  /* transform: translate(-50%, -50%); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,8 +173,8 @@
 }
 
 .play-icon-inner {
-  font-size: 26px;
-  color: white;
+  font-size: 26px !important;
+  color: white !important;
 }
 
 .sdp-image-card:hover .play-icon {

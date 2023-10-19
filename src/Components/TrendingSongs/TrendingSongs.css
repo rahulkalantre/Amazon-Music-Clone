@@ -133,7 +133,7 @@
 .play-icon {
   position: absolute;
   top: 50%;
-  left: 8%;
+  left: 8% !important;
   transform: translate(-50%, -50%);
   width: 40px;
   color: white;
