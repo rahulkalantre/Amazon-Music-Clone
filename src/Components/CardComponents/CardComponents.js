@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import "../RomanticSongs/RomanticSongs.css";
+import "../CardComponents/CardComponents.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function RomanticSongs() {
+function CardComponents({newData}) {
   const [data, setData] = useState([]);
+  const localData = JSON.parse(localStorage.getItem("user-info"));
+  const { category, title } = newData;
+  // const [isLoading, setIsloading] = useState(false)
 
   useEffect(() => {
+    let url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${category}"}`
     async function fetchData() {
       try {
-        const response = await fetch(
-          'https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"romantic"}',
+        const response = await fetch(url,
           {
             method: "GET",
             headers: {
@@ -30,11 +33,12 @@ function RomanticSongs() {
     }
     fetchData();
   }, []);
+
   return (
     <>
       <div className="romantic-songs-title">
-        <h1 className="romantic-songs-heading">Romantic Songs</h1>
-        <Link to="/romanticSongsSeeAll">
+        <h1 className="romantic-songs-heading">{title}</h1>
+        <Link to={localData?.status === "success" ? "/romanticSongsSeeAll" : `/aleartPage`}>
           <div className="see-all-button">
             <button className="see-all-btn">SEE ALL</button>
           </div>
@@ -51,10 +55,14 @@ function RomanticSongs() {
         centerSlidePercentage={11} // Show three items at a time
         emulateTouch={false}
       >
-        {data.length > 0 &&
+        {data?.length > 0 &&
           data?.map((item, index) => (
             <Link
-              to={`/albumDetailsPage?id=${item?.artist[0]?._id}`}
+              to={
+                localData?.status === "success"
+                  ? `/albumDetailsPage?id=${item?.artist[0]?._id}`
+                  : `/aleartPage`
+              }
               params={item?.artist[0]?._id}
             >
               <div className="song-card">
@@ -82,4 +90,4 @@ function RomanticSongs() {
   );
 }
 
-export default RomanticSongs;
+export default CardComponents;

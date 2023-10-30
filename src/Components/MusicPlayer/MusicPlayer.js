@@ -10,9 +10,9 @@ import {
 import { AiOutlineSound } from "react-icons/ai";
 import "../MusicPlayer/MusicPlayer.css";
 
-const MusicPlayer = ({ songDetails, setSongDetails }) => {
+const MusicPlayer = ({ songDetails, setSongDetails, isPlaying, setIsPlaying }) => {
   const [currentindex, setCurrentIndex] = useState(songDetails.index)
-  const [isPlaying, setIsPlaying] = useState(true);
+  
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };

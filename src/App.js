@@ -12,7 +12,8 @@ import RomanticSongsSeeAll from "./Components/SeeAllComponents/RomanticSongsSeeA
 import ExcitedSongsSeeAll from "./Components/SeeAllComponents/ExcitedSongsSeeAll";
 import HappySongsSeeAll from "./Components/SeeAllComponents/HappySongsSeeAll";
 import SadSongsSeeAll from "./Components/SeeAllComponents/SadSongsSeeAll";
-
+import AleartPage from "./Components/AleartPage/AleartPage";
+import PodCasts from "./Components/PodCasts/PodCasts";
 
 const App = () => {
   return (
@@ -25,10 +26,12 @@ const App = () => {
         <Route path="/excitedSongsSeeAll" element={<ExcitedSongsSeeAll />} />
         <Route path="/happySongsSeeAll" element={<HappySongsSeeAll />} />
         <Route path="/sadSongsSeeAll" element={<SadSongsSeeAll />} />
-        <Route path="/login" element={<SignIn />} />
+        <Route path="/signIn" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="search/:query" element={<SuggetionPage />} />
+        <Route path="/aleartPage" element={<AleartPage />} />
+        <Route path="/podCasts" element={<PodCasts />} />
       </Routes>
     </>
   );

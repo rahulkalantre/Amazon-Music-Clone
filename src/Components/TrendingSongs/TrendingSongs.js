@@ -21,6 +21,8 @@ const TrendingSongs = () => {
   const [data, setData] = useState([]);
   const [playSong, setPlaySong] = useState(false);
   const [songDetails, setSongDetails] = useState({});
+  const [isPlaying, setIsPlaying] = useState(true);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -36,6 +38,7 @@ const TrendingSongs = () => {
         );
         const json = await response.json();
         setData(json.data);
+        console.log(json.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -58,7 +61,7 @@ const TrendingSongs = () => {
             <div
               className="playlist-item"
               onClick={() => {
-                setPlaySong(!playSong);
+                isPlaying ? setPlaySong(true) : setPlaySong(false);
                 setSongDetails({
                   img: item?.thumbnail || "",
                   title: item?.title || "",
@@ -83,10 +86,12 @@ const TrendingSongs = () => {
             </div>
           ))}
       </Slider>
-      {playSong && (
+      { playSong && (
         <MusicPlayer
           songDetails={songDetails}
           setSongDetails={setSongDetails}
+          setIsPlaying = {setIsPlaying}
+          isPlaying = {isPlaying}
         />
       )}
     </>

@@ -21,6 +21,7 @@ const NavigationBar = () => {
   const [navicolor, setNaviColor] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
+  const localData = JSON.parse(localStorage.getItem('user-info'));
 
   const changeColor = () => {
     if (window.scrollY >= 10) {
@@ -67,7 +68,7 @@ const NavigationBar = () => {
           </Nav>
         </div>
         <div className="right-div">
-          <Link to="/search">
+          <Link to={localData?.status === "success" ? `/search` : `/aleartPage`}>
             <Navbar.Collapse id="basic-navbar-nav">
               <FormControl
                 type="text"
@@ -85,16 +86,16 @@ const NavigationBar = () => {
             id="basic-nav-dropdown"
             className="user-dropdown custom-dropdown"
           >
-            <NavDropdown.Item as={Link} to="/login">
+            {localData?.status !== "success" && (<NavDropdown.Item as={Link} to="/signIn">
               Login
-            </NavDropdown.Item>
+            </NavDropdown.Item>)}
             <NavDropdown.Divider />
             <NavDropdown.Item as={Link} to="/subscriptions">
               Subscriptions
             </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/logout">
+            {localData?.status === "success" && (<NavDropdown.Item as={Link} to="/" onClick={() => {localStorage.clear()}}>
               Logout
-            </NavDropdown.Item>
+            </NavDropdown.Item>)}
           </NavDropdown>
         </div>
       </Navbar.Collapse>

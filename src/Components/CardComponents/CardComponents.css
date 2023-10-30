@@ -22,6 +22,10 @@
   border-radius: 10px;
 }
 
+.romantic-songs-carousel a {
+  text-decoration: none;
+}
+
 .romantic-songs-carousel .carousel.carousel-slider {
   margin-left: -48rem;
 }
@@ -87,7 +91,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 0.3s ease;
   height: 194px;
@@ -95,7 +99,7 @@
   border-radius: 10px;
 }
 
-.song-card:hover .romantic-song-overlay{
+.song-card:hover .romantic-song-overlay {
   opacity: 1;
 }
 

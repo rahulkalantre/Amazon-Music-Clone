@@ -42,7 +42,7 @@ const SignUp = () => {
         setEmail("");
         setPassword("");
         navigate("/signIn");
-        localStorage.setItem("user-info", JSON.stringify(response));
+        // localStorage.setItem("user-info", JSON.stringify(response));
       } else {
         alert(response.message);
       }
@@ -85,7 +85,7 @@ const SignUp = () => {
         <button className="signup-button" onClick={AmazonMusicSingUP}>
           Create your Amazon account
         </button>
-        <Link to="/login">
+        <Link to="/signIn">
         <p className="login-info">
           Already have an account? <a href="/signin">Sign in</a>
         </p>
