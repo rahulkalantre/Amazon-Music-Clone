@@ -72,3 +72,9 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+.signIn-heading,
+.signIn-email,
+.signIn-password {
+  color: white;
+}

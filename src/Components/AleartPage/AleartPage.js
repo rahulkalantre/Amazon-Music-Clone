@@ -5,7 +5,13 @@ import "../AleartPage/AleartPage.css";
 const AleartPage = () => {
   return (
     <div className="container">
-      <h1>Button Page</h1>
+      <h3 className="alert-heading-button">Try Amazon Prime Music</h3>
+      <p className="alert-message-button">
+        Ad-free music streaming included with Prime membership.  
+      </p>
+      <p className="alert-message-button2">
+        Also includes free shipping and video streaming.
+      </p>
       <div className="button-container">
         <Link to="/signIn">
           <button className="custom-button primary-button">
@@ -16,7 +22,7 @@ const AleartPage = () => {
           <button className="custom-button secondary-button">TRY NOW</button>
         </Link>
         <Link to="/">
-            <div className="close-button">X</div>
+          <div className="close-button">X</div>
         </Link>
       </div>
     </div>

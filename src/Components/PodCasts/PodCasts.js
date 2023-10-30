@@ -26,7 +26,8 @@ const PodCasts = () => {
   };
 
   return (
-    <>
+    <div className="podcast-page">
+      <h3 className="waiting-heading">PodCasts Are Comming Soon Till Enjoy</h3>
       <h2 className="search-heading-mood">Songs Based On Mood</h2>
       <div className="mood-button-container">
         <button
@@ -70,7 +71,7 @@ const PodCasts = () => {
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

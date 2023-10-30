@@ -1,4 +1,4 @@
-.search-heading-mood {
+/* .search-heading-mood {
   margin-top: 70px;
 }
 .mood-button-container {
@@ -70,16 +70,11 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
-  /* border-radius: 50%; */
   margin-bottom: 10px;
-  /* height: auto;
-  max-height: 150px; */
 }
 
 .grid-item-title {
-  /* margin-top: 10px; */
   font-size: 16px;
   text-align: center;
   font-weight: bold;
-  /* overflow: hidden; */
-}
+} */

@@ -70,3 +70,10 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+.signUp-heading,
+.signUp-name,
+.signUp-email,
+.signUp-password {
+  color: white;
+}

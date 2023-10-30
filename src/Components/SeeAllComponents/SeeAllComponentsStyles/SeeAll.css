@@ -12,7 +12,7 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
   padding: 10px;
-  margin-top: 20px;
+  /* margin-top: 10px; */
 }
 
 .allportrait-data {
@@ -29,8 +29,8 @@
 }
 
 .allportrait-name {
-  padding-top: 70px;
-  color: black;
+  padding-top: 80px;
+  color: white;
   margin-left: 20px;
   font-weight: bold;
   font-size: 40px;
@@ -38,7 +38,7 @@
 
 .card-heading {
   padding: 15px 15px;
-  color: black;
+  color: white;
   font-weight: bold;
   display: flex;
   width: 85%;

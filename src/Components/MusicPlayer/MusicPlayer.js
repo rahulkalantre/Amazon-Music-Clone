@@ -16,9 +16,6 @@ const MusicPlayer = ({ songDetails, setSongDetails, isPlaying, setIsPlaying }) =
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
-  const nextSong = () => {
-
-  }
 
   const ref = useRef(null);
 

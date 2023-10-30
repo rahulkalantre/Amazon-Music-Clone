@@ -62,9 +62,9 @@ const SignIn = () => {
             alt="Amazon Logo"
             className="amazon-logo"
           />
-          <h1>Sign-In</h1>
+          <h1 className="signIn-heading">Sign-In</h1>
           <div className="form-group">
-            <label>Email or mobile phone number</label>
+            <label className="signIn-email">Email or mobile phone number</label>
             <input
               type="text"
               placeholder="Enter your email or phone number"
@@ -73,7 +73,7 @@ const SignIn = () => {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label className="signIn-password">Password</label>
             <input
               type="password"
               placeholder="Enter your password"

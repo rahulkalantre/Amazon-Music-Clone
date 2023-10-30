@@ -42,7 +42,6 @@ const SignUp = () => {
         setEmail("");
         setPassword("");
         navigate("/signIn");
-        // localStorage.setItem("user-info", JSON.stringify(response));
       } else {
         alert(response.message);
       }
@@ -54,9 +53,9 @@ const SignUp = () => {
     <div className="signup-container">
       <div className="signup-form">
         <img src="" alt="Amazon Logo" className="amazon-logo" />
-        <h1>Create account</h1>
+        <h1 className="signUp-heading">Create Account</h1>
         <div className="form-group">
-          <label>Your name</label>
+          <label className="signUp-name">Your Name</label>
           <input
             type="text"
             placeholder="Your name"
@@ -65,7 +64,7 @@ const SignUp = () => {
           />
         </div>
         <div className="form-group">
-          <label>Email</label>
+          <label className="signUp-email">Email</label>
           <input
             type="email"
             placeholder="Your email"
@@ -74,7 +73,7 @@ const SignUp = () => {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label className="signUp-password">Password</label>
           <input
             type="password"
             placeholder="Create a password"

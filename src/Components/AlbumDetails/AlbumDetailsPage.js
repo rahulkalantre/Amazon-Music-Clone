@@ -4,16 +4,19 @@ import { GrFormAdd } from "react-icons/gr";
 import { BiSolidShareAlt } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/ai";
 import "../AlbumDetails/AlbumDetailsPage.css";
-// import "./Styles/SongDetailsPage.css";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
 
 const AlbumDetailsPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get("id");
-  // console.log(myParam);
-  // const { id } = props;
   const [isHovered, setIsHovered] = useState(false);
   const [data, setData] = useState([]);
   const [songsData, setSongsData] = useState([]);
+
+  // const [data, setData] = useState([]);
+  const [playSong, setPlaySong] = useState(false);
+  const [songDetails, setSongDetails] = useState({});
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,10 +32,10 @@ const AlbumDetailsPage = () => {
         );
         const json = await response.json();
         console.log(json);
-        let romanticSongs = json.data.songs.filter(item => item.mood === "romantic")
+        let romanticSongs = json.data.songs.filter(
+          (item) => item.mood === "romantic"
+        );
         setData(romanticSongs);
-        // setSongsData(json.data?.songs || []);
-        // setHeading(json.data[0].mood)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -42,14 +45,14 @@ const AlbumDetailsPage = () => {
   console.log(data);
   return (
     <>
-      <div className="adp-background-color">
-        <div className="adp-image-card">
+      <div className="adp-background">
+        <div className="adp-card">
           <img src={data?.thumbnail} alt="image-new" className="adp-image" />
-          <div className="content">
-            <h6 className="adp-h6-tag">PLAYLIST</h6>
-            <h1 className="adp-heading">{data[0]?.mood.toUpperCase()} SONGS</h1>
-            <h5 className="adp-h5-tag">Curated by Amazon Music</h5>
-            <p className="adp-p-tag">{data?.description}</p>
+          <div className="adp-content">
+            <h6 className="adp-subtitle">PLAYLIST</h6>
+            <h1 className="adp-title">{data[0]?.mood.toUpperCase()} SONGS</h1>
+            <h5 className="adp-tagline">Curated by Amazon Music</h5>
+            {/* <p className="adp-description">{data?.description}</p> */}
             <br />
             <p>50 SONGS • 3 HOURS AND 27 MINUTES</p>
             <div className="actions">
@@ -71,37 +74,56 @@ const AlbumDetailsPage = () => {
         {data.length > 0 &&
           data.map((item, index) => (
             <div
-              className="sdp-image-card"
+              className="adp-song-card"
               onMouseEnter={() => setIsHovered(index)}
               onMouseLeave={() => setIsHovered(-1)}
             >
-              <div className="sdp-image-container" key={index}>
-                <div className="sdp-image-number">{index}</div>
+              <div className="adp-song-info" key={index}>
+                <div className="adp-song-number">{index}</div>
                 <img
                   src={item?.thumbnail}
                   alt="album-banner"
-                  className="sdp-image"
+                  className="adp-song-image"
+                  onClick={() => {
+                    isPlaying ? setPlaySong(true) : setPlaySong(false);
+                    setSongDetails({
+                      img: item?.thumbnail || "",
+                      title: item?.title || "",
+                      artist: item?.artist[0]?.name || "",
+                      songs: data || [],
+                      index: index,
+                    });
+                  }}
                 />
-                {/* {console.log(item.thumbnail)} */}
-                {(isHovered === index) && (
-                  <div className="play-icon">
-                    <AiOutlinePlayCircle className="play-icon-inner" />
+                {isHovered === index && (
+                  <div className="adp-play-icon">
+                    <AiOutlinePlayCircle className="adp-play-icon-inner" />
                   </div>
                 )}
-                <div className="sdp-text-container">
+                <div className="adp-song-text">
                   <h3>{item?.title}</h3>
                   <p> Artist : Unknown</p>
                 </div>
               </div>
-              <div className="sdp-heading"><p>{item?.title}</p></div>
-              <div className="sdp-duration">3.43</div>
-              <div className="sdpa-icons">
-                <AiOutlinePlus className="sdp-icon" />
-                <BsThreeDots className="sdp-icon" />
+              <div className="adp-song-title">
+                <p>{item?.title}</p>
+              </div>
+              <div className="adp-duration">3.43</div>
+              <div className="adp-icons">
+                <AiOutlinePlus className="adp-icon" />
+                <BsThreeDots className="adp-icon" />
               </div>
             </div>
           ))}
       </div>
+      {playSong && (
+        <MusicPlayer
+          songDetails={songDetails}
+          setSongDetails={setSongDetails}
+          setIsPlaying={setIsPlaying}
+          isPlaying={isPlaying}
+        />
+      )}
     </>
   );
 };

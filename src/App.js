@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/sadSongsSeeAll" element={<SadSongsSeeAll />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/search" element={<SearchPage />} />
+        {/* <Route path="/search" element={<SearchPage />} /> */}
         <Route path="search/:query" element={<SuggetionPage />} />
         <Route path="/aleartPage" element={<AleartPage />} />
         <Route path="/podCasts" element={<PodCasts />} />
