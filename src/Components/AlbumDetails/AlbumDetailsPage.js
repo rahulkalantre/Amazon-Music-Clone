@@ -12,8 +12,6 @@ const AlbumDetailsPage = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [data, setData] = useState([]);
   const [songsData, setSongsData] = useState([]);
-
-  // const [data, setData] = useState([]);
   const [playSong, setPlaySong] = useState(false);
   const [songDetails, setSongDetails] = useState({});
   const [isPlaying, setIsPlaying] = useState(true);
@@ -85,7 +83,7 @@ const AlbumDetailsPage = () => {
                   alt="album-banner"
                   className="adp-song-image"
                   onClick={() => {
-                    isPlaying ? setPlaySong(true) : setPlaySong(false);
+                    setPlaySong(true);
                     setSongDetails({
                       img: item?.thumbnail || "",
                       title: item?.title || "",
@@ -101,7 +99,7 @@ const AlbumDetailsPage = () => {
                   </div>
                 )}
                 <div className="adp-song-text">
-                  <h3>{item?.title}</h3>
+                  <h5>{item?.title}</h5>
                   <p> Artist : Unknown</p>
                 </div>
               </div>

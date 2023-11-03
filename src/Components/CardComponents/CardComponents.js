@@ -38,7 +38,7 @@ function CardComponents({newData}) {
     <>
       <div className="romantic-songs-title">
         <h1 className="romantic-songs-heading">{title}</h1>
-        <Link to={localData?.status === "success" ? "/romanticSongsSeeAll" : `/aleartPage`}>
+        <Link to={localData?.status === "success" ? `/songsSeeAll/${category}` : `/aleartPage`}>
           <div className="see-all-button">
             <button className="see-all-btn">SEE ALL</button>
           </div>

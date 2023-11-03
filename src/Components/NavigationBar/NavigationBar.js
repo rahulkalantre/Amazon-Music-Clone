@@ -13,6 +13,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import UserIcon from "../UserIcon/UserIcon";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavigationBar/NavigationBar.css";
 
@@ -20,8 +21,10 @@ const NavigationBar = () => {
   // To change the color of nav after scrolling
   const [navicolor, setNaviColor] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const navigate = useNavigate();
-  const localData = JSON.parse(localStorage.getItem('user-info'));
+  const localData = JSON.parse(localStorage.getItem("user-info"));
 
   const changeColor = () => {
     if (window.scrollY >= 10) {
@@ -59,7 +62,10 @@ const NavigationBar = () => {
             <Nav.Link as={Link} to="/">
               <GoHome className="nav-icons" /> Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/podcasts">
+            <Nav.Link
+              as={Link}
+              to={localData?.status === "success" ? `/podCasts` : `/aleartPage`}
+            >
               <MdPodcasts className="nav-icons" /> Podcasts
             </Nav.Link>
             <Nav.Link as={Link} to="/library">
@@ -68,7 +74,9 @@ const NavigationBar = () => {
           </Nav>
         </div>
         <div className="right-div">
-          <Link to={localData?.status === "success" ? `/search` : `/aleartPage`}>
+          <Link
+            to={localData?.status === "success" ? `/search` : `/aleartPage`}
+          >
             <Navbar.Collapse id="basic-navbar-nav">
               <FormControl
                 type="text"
@@ -81,22 +89,9 @@ const NavigationBar = () => {
               <BsSearch className="search-icon" />
             </Navbar.Collapse>
           </Link>
-          <BiUserCircle className="nav-icons" />
-          <NavDropdown
-            id="basic-nav-dropdown"
-            className="user-dropdown custom-dropdown"
-          >
-            {localData?.status !== "success" && (<NavDropdown.Item as={Link} to="/signIn">
-              Login
-            </NavDropdown.Item>)}
-            <NavDropdown.Divider />
-            <NavDropdown.Item as={Link} to="/subscriptions">
-              Subscriptions
-            </NavDropdown.Item>
-            {localData?.status === "success" && (<NavDropdown.Item as={Link} to="/" onClick={() => {localStorage.clear()}}>
-              Logout
-            </NavDropdown.Item>)}
-          </NavDropdown>
+          <div>
+            <UserIcon />
+          </div>
         </div>
       </Navbar.Collapse>
     </Navbar>

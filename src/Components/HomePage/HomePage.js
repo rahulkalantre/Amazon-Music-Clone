@@ -2,6 +2,8 @@ import React from "react";
 import "../HomePage/HomePage.css";
 import TrendingSongs from "../TrendingSongs/TrendingSongs";
 import CardComponents from "../CardComponents/CardComponents";
+import MusicPlayerNew from "../MusicPlayerNew/MusicPlayerNew";
+// import UserIcon from "../UserIcon/UserIcon";
 
 const arr = [
   {
@@ -32,7 +34,6 @@ const HomePage = () => {
         })
       }
       <TrendingSongs />
-      {/* <AleartPage /> */}
     </div>
   );
 };

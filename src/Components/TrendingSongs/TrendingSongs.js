@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { AiOutlinePlus } from "react-icons/ai";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 
 const TrendingSongs = () => {
   const settings = {
@@ -18,10 +19,13 @@ const TrendingSongs = () => {
     slidesPerRow: 1,
   };
 
+  const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
+
   const [data, setData] = useState([]);
-  const [playSong, setPlaySong] = useState(false);
-  const [songDetails, setSongDetails] = useState({});
-  const [isPlaying, setIsPlaying] = useState(true);
+
+  // const [playSong, setPlaySong] = useState(false);
+  // const [songDetails, setSongDetails] = useState({});
+  // const [isPlaying, setIsPlaying] = useState(true);
 
 
   useEffect(() => {
@@ -50,9 +54,9 @@ const TrendingSongs = () => {
     <>
       <div className="trending-playlists">
         <h2 className="playlist-heading">Trending Playlists</h2>
-        <div className="see-all-button">
+        {/* <div className="see-all-button">
           <button className="see-all-btn">SEE ALL</button>
-        </div>
+        </div> */}
       </div>
       <br />
       <Slider {...settings}>
@@ -61,7 +65,8 @@ const TrendingSongs = () => {
             <div
               className="playlist-item"
               onClick={() => {
-                isPlaying ? setPlaySong(true) : setPlaySong(false);
+                setPlaySong(true);
+                setIsPlaying(true)
                 setSongDetails({
                   img: item?.thumbnail || "",
                   title: item?.title || "",
@@ -69,6 +74,7 @@ const TrendingSongs = () => {
                   songs: data || [],
                   index: index,
                 });
+                setCurrentIndex(index)
               }}
             >
               <img
@@ -86,14 +92,7 @@ const TrendingSongs = () => {
             </div>
           ))}
       </Slider>
-      { playSong && (
-        <MusicPlayer
-          songDetails={songDetails}
-          setSongDetails={setSongDetails}
-          setIsPlaying = {setIsPlaying}
-          isPlaying = {isPlaying}
-        />
-      )}
+      { playSong && (<MusicPlayer/> )}
     </>
   );
 };

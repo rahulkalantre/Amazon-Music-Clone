@@ -5,7 +5,6 @@
 .adp-card {
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
   justify-content: space-between;
   background-color: black;
   margin-top: 76px;
@@ -32,7 +31,7 @@
 }
 
 .adp-title {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-top: 0px;
   font-weight: bold;
 }
@@ -51,7 +50,6 @@
   background-color: aqua;
   color: black;
   border: none;
-  /* padding: 8px 12px; */
   border-radius: 25px;
   cursor: pointer;
   width: 100px;
@@ -91,8 +89,7 @@
 }
 
 .adp-song-number {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
   margin-right: 20px;
   color: white;
 }
@@ -107,8 +104,8 @@
 }
 
 .adp-song-image {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   margin-right: 20px;
 }
@@ -127,8 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 14px;
   margin-left: 0px;
   margin-right: 300px;
   color: white;

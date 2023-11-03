@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
-import "./SeeAllComponentsStyles/SeeAll.css";
+import "./SongsSeeAll.css";
 
 
-function RomanticSongsSeeAll() {
+function SongsSeeAll() {
+  const { query } = useParams();
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          'https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"romantic"}',
+          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}`,
           {
             method: "GET",
             headers: {
@@ -31,7 +33,7 @@ function RomanticSongsSeeAll() {
   return (
     <>
       <div className="allpotrait-title">
-        <h1 className="allportrait-name">Romantic Songs</h1>
+        <h1 className="allportrait-name">{query} songs</h1>
       </div>
       <br />
       <div className="allportrait-card">
@@ -61,4 +63,4 @@ function RomanticSongsSeeAll() {
   );
 }
 
-export default RomanticSongsSeeAll;
+export default SongsSeeAll;

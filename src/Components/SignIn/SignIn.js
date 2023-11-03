@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../Assets/logo.png"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReactDOM from "react-dom";
@@ -58,7 +59,7 @@ const SignIn = () => {
       <div className="signin-container">
         <div className="signin-form">
           <img
-            src="https://music.amazon.in/genres/tsEfDAOd"
+            src={logo}
             alt="Amazon Logo"
             className="amazon-logo"
           />

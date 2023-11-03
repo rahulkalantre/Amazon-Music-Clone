@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
+import logo from "../../Assets/logo.png"
 import "../SignUp/SignUp.css";
 import { Link } from "react-router-dom";
 
@@ -52,7 +53,7 @@ const SignUp = () => {
   return ReactDOM.createPortal(
     <div className="signup-container">
       <div className="signup-form">
-        <img src="" alt="Amazon Logo" className="amazon-logo" />
+        <img src={logo} alt="Amazon Logo" className="amazon-logo" />
         <h1 className="signUp-heading">Create Account</h1>
         <div className="form-group">
           <label className="signUp-name">Your Name</label>
