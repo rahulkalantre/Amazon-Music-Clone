@@ -11,13 +11,14 @@ function SongsSeeAll() {
   const { query } = useParams();
   const [data, setData] = useState([]);
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
+  const [page, setPage] = useState(1);
 
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}`,
+          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}&page=${page}&limit=50`,
           {
             method: "GET",
             headers: {
@@ -33,6 +34,27 @@ function SongsSeeAll() {
       }
     }
     fetchData();
+  }, [page]);
+
+  const handelInfiniteScroll = async () => {
+    // console.log("scrollHeight" + document.documentElement.scrollHeight);
+    // console.log("innerHeight" + window.innerHeight);
+    // console.log("scrollTop" + document.documentElement.scrollTop);
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 10 >=
+        document.documentElement.scrollHeight
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handelInfiniteScroll);
+    return () => window.removeEventListener("scroll", handelInfiniteScroll);
   }, []);
   return (
     <>
@@ -41,7 +63,7 @@ function SongsSeeAll() {
       </div>
       <br />
       <div className="allportrait-card">
-        {data.length > 0 &&
+        {data?.length > 0 &&
           data?.map((item, index) => (
             <div className="allportrait-data"
               onClick={() => {
