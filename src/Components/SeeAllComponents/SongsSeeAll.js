@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 import "./SongsSeeAll.css";
 
 
 function SongsSeeAll() {
   const { query } = useParams();
   const [data, setData] = useState([]);
+  const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
+
 
   useEffect(() => {
     async function fetchData() {
@@ -39,7 +43,20 @@ function SongsSeeAll() {
       <div className="allportrait-card">
         {data.length > 0 &&
           data?.map((item, index) => (
-            <div className="allportrait-data">
+            <div className="allportrait-data"
+              onClick={() => {
+                    setPlaySong(true);
+                    setIsPlaying(true)
+                    setSongDetails({
+                      img: item?.thumbnail || "",
+                      title: item?.title || "",
+                      artist: item?.artist[0]?.name || "",
+                      songs: data || [],
+                      index: index,
+                    });
+                    setCurrentIndex(index)
+                  }}
+            >
               <div>
                 <img
                   src={item.artist[0]?.image}
@@ -59,6 +76,7 @@ function SongsSeeAll() {
             </div>
           ))}
       </div>
+      { playSong && (<MusicPlayer/> )}
     </>
   );
 }

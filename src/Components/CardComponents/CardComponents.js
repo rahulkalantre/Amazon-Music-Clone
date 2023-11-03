@@ -7,6 +7,7 @@ import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function CardComponents({newData}) {
+
   const [data, setData] = useState([]);
   const localData = JSON.parse(localStorage.getItem("user-info"));
   const { category, title } = newData;

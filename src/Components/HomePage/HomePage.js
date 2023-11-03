@@ -2,8 +2,8 @@ import React from "react";
 import "../HomePage/HomePage.css";
 import TrendingSongs from "../TrendingSongs/TrendingSongs";
 import CardComponents from "../CardComponents/CardComponents";
-import MusicPlayerNew from "../MusicPlayerNew/MusicPlayerNew";
-// import UserIcon from "../UserIcon/UserIcon";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 
 const arr = [
   {
@@ -25,7 +25,8 @@ const arr = [
 ]
 
 const HomePage = () => {
-  
+  const { playSong } = useMusicPlayer()
+
   return (
     <div className="home-page">
       {
@@ -34,6 +35,7 @@ const HomePage = () => {
         })
       }
       <TrendingSongs />
+      { playSong && (<MusicPlayer/> )}
     </div>
   );
 };

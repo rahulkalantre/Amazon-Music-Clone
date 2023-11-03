@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchPage from "../SearchBar/SearchPage";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 import "../SuggetionPage/SuggestionPage.css"
 
 function SuggestionPage() {
   const [data, setData] = useState([]);
   const { query } = useParams();
+  const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
 
   useEffect(() => {
     async function fetchData() {
@@ -41,7 +44,20 @@ function SuggestionPage() {
         <div className="grid-containerr">
           {data.length > 0 ? (
             data?.map((item, index) => (
-              <div className="grid-itemm" key={index}>
+              <div className="grid-itemm" key={index}
+                onClick={() => {
+                    setPlaySong(true);
+                    setIsPlaying(true)
+                    setSongDetails({
+                      img: item?.thumbnail || "",
+                      title: item?.title || "",
+                      artist: item?.artist[0]?.name || "",
+                      songs: data || [],
+                      index: index,
+                    });
+                    setCurrentIndex(index)
+                  }}
+              >
                   <img
                     className="grid-imagee"
                     src={item.thumbnail}
@@ -55,6 +71,7 @@ function SuggestionPage() {
           )}
         </div>
       )}
+      { playSong && (<MusicPlayer/> )}
     </>
   );
 }

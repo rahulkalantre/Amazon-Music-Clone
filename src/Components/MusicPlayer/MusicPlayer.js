@@ -7,7 +7,7 @@ import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 const MusicPlayer = () => {
   const audioRef = useRef();
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, currentindex, setCurrentIndex } = useMusicPlayer();
-  // const [isRandom, setIsRandom] = useState(false);
+  const [isRandom, setIsRandom] = useState(false);
   const [previousIndex, setPreviousIndex] = useState(currentindex);
   const [volume, setVolume] = useState(50);
   const [progress, setProgress] = useState(0);

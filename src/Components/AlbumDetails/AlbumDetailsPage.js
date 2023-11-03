@@ -5,16 +5,14 @@ import { BiSolidShareAlt } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/ai";
 import "../AlbumDetails/AlbumDetailsPage.css";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 
 const AlbumDetailsPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get("id");
   const [isHovered, setIsHovered] = useState(false);
   const [data, setData] = useState([]);
-  const [songsData, setSongsData] = useState([]);
-  const [playSong, setPlaySong] = useState(false);
-  const [songDetails, setSongDetails] = useState({});
-  const [isPlaying, setIsPlaying] = useState(true);
+  const { playSong, setSongDetails, setIsPlaying, setPlaySong, setCurrentIndex } = useMusicPlayer()
 
   useEffect(() => {
     async function fetchData() {
@@ -84,6 +82,7 @@ const AlbumDetailsPage = () => {
                   className="adp-song-image"
                   onClick={() => {
                     setPlaySong(true);
+                    setIsPlaying(true)
                     setSongDetails({
                       img: item?.thumbnail || "",
                       title: item?.title || "",
@@ -91,6 +90,7 @@ const AlbumDetailsPage = () => {
                       songs: data || [],
                       index: index,
                     });
+                    setCurrentIndex(index)
                   }}
                 />
                 {isHovered === index && (
@@ -114,14 +114,7 @@ const AlbumDetailsPage = () => {
             </div>
           ))}
       </div>
-      {playSong && (
-        <MusicPlayer
-          songDetails={songDetails}
-          setSongDetails={setSongDetails}
-          setIsPlaying={setIsPlaying}
-          isPlaying={isPlaying}
-        />
-      )}
+      { playSong && (<MusicPlayer/> )}
     </>
   );
 };

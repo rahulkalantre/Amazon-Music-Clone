@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 import "../PodCasts/PodCasts.css";
 
 const PodCasts = () => {
   const [data, setData] = useState([]);
+  const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
 
   const actionHandler = (mood) => {
     async function fetchData() {
@@ -61,7 +64,20 @@ const PodCasts = () => {
       <div className="grid-container">
         {data.length > 0 &&
           data?.map((item, index) => (
-            <div className="grid-item">
+            <div className="grid-item"
+              onClick={() => {
+                    setPlaySong(true);
+                    setIsPlaying(true)
+                    setSongDetails({
+                      img: item?.thumbnail || "",
+                      title: item?.title || "",
+                      artist: item?.artist[0]?.name || "",
+                      songs: data || [],
+                      index: index,
+                    });
+                    setCurrentIndex(index)
+                  }}
+            >
               <img
                 src={item.artist[0]?.image}
                 alt="image001"
@@ -71,6 +87,7 @@ const PodCasts = () => {
             </div>
           ))}
       </div>
+      { playSong && (<MusicPlayer/> )}
     </div>
   );
 };

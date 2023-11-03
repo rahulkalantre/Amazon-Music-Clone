@@ -3,7 +3,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../TrendingSongs/TrendingSongs.css";
 import Slider from "react-slick";
 import { AiOutlinePlus } from "react-icons/ai";
-import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
 import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 
@@ -92,7 +91,6 @@ const TrendingSongs = () => {
             </div>
           ))}
       </Slider>
-      { playSong && (<MusicPlayer/> )}
     </>
   );
 };
