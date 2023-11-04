@@ -10,6 +10,9 @@
   justify-content: space-between;
 }
 
+.romantic-songs-title a {
+  text-decoration: none;
+}
 .song-card {
   position: relative;
   height: 241px;
@@ -63,9 +66,10 @@
   display: flex;
   margin: 5px;
   background-color: black;
+  /* text-decoration: none !important; */
 }
 
-.see-all-btn {
+.see-all-btns {
   border-radius: 25px;
   background-color: gray;
   color: white;
@@ -74,7 +78,6 @@
   font-size: 15px;
   border: none;
   cursor: pointer;
-  text-decoration: none !important;
 }
 
 /* :hover */

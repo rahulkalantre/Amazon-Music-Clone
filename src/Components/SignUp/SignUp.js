@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
+import Toaster from "../../Assets/Toster";
 import logo from "../../Assets/logo.png"
 import "../SignUp/SignUp.css";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-
+  const [toast, setToast] = useState({
+    status: "",
+    message: "",
+  });
+  const [isMessageShown, setIsMessageShown] = useState(false);
   async function AmazonMusicSingUP() {
     try {
       let item = {
@@ -38,13 +40,23 @@ const SignUp = () => {
       let response = await getData.json();
       console.log(response);
       if (response.status === "success") {
-        alert("You SingUp in Successfully");
+        setToast({
+          status: "success",
+          message: "You are SignIn in Successfully!",
+        });
+        setIsMessageShown(true);
         setName("");
         setEmail("");
         setPassword("");
-        navigate("/signIn");
+        setTimeout (() => {
+          navigate("/signIn");
+        }, 1000);
       } else {
-        alert(response.message);
+        setIsMessageShown(true);
+        setToast({
+          status: "error",
+          message: response.message,
+        });
       }
     } catch (e) {
       console.log(e);
@@ -60,7 +72,7 @@ const SignUp = () => {
           <input
             type="text"
             placeholder="Your name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => { setIsMessageShown(false), setName(e.target.value) }}
             value={name}
           />
         </div>
@@ -69,7 +81,7 @@ const SignUp = () => {
           <input
             type="email"
             placeholder="Your email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {setIsMessageShown(false), setEmail(e.target.value)}}
             value={email}
           />
         </div>
@@ -78,7 +90,7 @@ const SignUp = () => {
           <input
             type="password"
             placeholder="Create a password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {setIsMessageShown(false), setPassword(e.target.value)}}
             value={password}
           />
         </div>
@@ -91,6 +103,14 @@ const SignUp = () => {
         </p>
         </Link>
       </div>
+      {/* {toast.status == "success" ||
+      toast.status == "error" ||
+      toast.status == "workingOn"  */}
+      {isMessageShown ? (
+        <Toaster status={toast.status} message={toast.message} />
+      ) : (
+        ""
+      )}
     </div>,
     document.getElementById("SignUp")
   );

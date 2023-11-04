@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../Assets/logo.png"
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import logo from "../../Assets/logo.png";
+import Toaster from "../../Assets/Toster";
 import ReactDOM from "react-dom";
 import "../SignIn/SignIn.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [toast, setToast] = useState({
+    status: "",
+    message: "",
+  });
   const navigate = useNavigate();
-
-  const notify = () => {
-    toast.error("Wow so easy!", {autoClose: 5000});
-  };
+  const [isMessageShown, setIsMessageShown] = useState(false);
 
   async function AmazonMusicSingIn() {
-    toast.error("Wow so easyyyyy!", {autoClose: 5000});
-
     try {
       let item = {
         email: email,
@@ -38,16 +36,24 @@ const SignIn = () => {
       );
       let response = await getData.json();
       console.log(response);
-      toast.error("Wow so easy!", {autoClose: 5000});
       if (response.status == "success") {
+        setToast({
+          status: "success",
+          message: "You are Logging in Successfully!",
+        });
         localStorage.setItem("user-info", JSON.stringify(response));
-        // alert("You are Logging in Successfully");
-        notify()
+        setIsMessageShown(true);
         setEmail("");
         setPassword("");
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 1200);
       } else {
-        alert(response.message);
+        setIsMessageShown(true);
+        setToast({
+          status: "error",
+          message: response.message,
+        });
       }
     } catch (e) {
       console.log(e);
@@ -58,18 +64,14 @@ const SignIn = () => {
     <>
       <div className="signin-container">
         <div className="signin-form">
-          <img
-            src={logo}
-            alt="Amazon Logo"
-            className="amazon-logo"
-          />
+          <img src={logo} alt="Amazon Logo" className="amazon-logo" />
           <h1 className="signIn-heading">Sign-In</h1>
           <div className="form-group">
             <label className="signIn-email">Email or mobile phone number</label>
             <input
               type="text"
               placeholder="Enter your email or phone number"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {setIsMessageShown(false), setEmail(e.target.value)}}
               value={email}
             />
           </div>
@@ -78,7 +80,7 @@ const SignIn = () => {
             <input
               type="password"
               placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {setIsMessageShown(false), setPassword(e.target.value)}}
               value={password}
             />
           </div>
@@ -98,7 +100,14 @@ const SignIn = () => {
           </Link>
         </div>
       </div>
-
+      {/* {toast.status == "success" ||
+      toast.status == "error" ||
+      toast.status == "workingOn"  */}
+      { isMessageShown ? (
+        <Toaster status={toast.status} message={toast.message} />
+      ) : (
+        ""
+      )}
     </>,
     document.getElementById("SignIn")
   );

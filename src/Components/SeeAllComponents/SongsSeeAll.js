@@ -18,7 +18,7 @@ function SongsSeeAll() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}&page=${page}&limit=50`,
+          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}&page=${page}&limit=25`,
           {
             method: "GET",
             headers: {
@@ -28,7 +28,7 @@ function SongsSeeAll() {
         );
         const json = await response.json();
         console.log(json);
-        setData(json.data);
+        setData((prev) => [...prev, ...json.data]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -56,6 +56,7 @@ function SongsSeeAll() {
     window.addEventListener("scroll", handelInfiniteScroll);
     return () => window.removeEventListener("scroll", handelInfiniteScroll);
   }, []);
+
   return (
     <>
       <div className="allpotrait-title">
@@ -94,7 +95,6 @@ function SongsSeeAll() {
                 <BsThreeDots className="icon3" />
               </div>
               <h6 className="card-heading">{item?.title}</h6>
-              {/* <p className="p-tag">{item.artist[0]?.description}</p> */}
             </div>
           ))}
       </div>

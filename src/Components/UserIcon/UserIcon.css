@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.dropdown-content a {
+  text-decoration: none;
+}
+
 .menu-item {
   padding: 12px 16px;
   cursor: pointer;
