@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 import Toaster from "../../Assets/Toster";
@@ -29,7 +30,7 @@ const SignUp = () => {
         projectId: "edlpgt620a4c",
       };
       let getData = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/signup",
+        ApiUrl.signUp,
         {
           method: "POST",
           headers: Header,

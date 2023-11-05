@@ -15,6 +15,7 @@
 .song-details {
   display: flex !important;
   align-items: center !important;
+  width: 15%;
 }
 
 .album-cover {
@@ -89,3 +90,4 @@
   width: 100px;
   height: 10px;
 }
+

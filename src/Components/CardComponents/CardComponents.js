@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "../CardComponents/CardComponents.css";
@@ -7,14 +8,12 @@ import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function CardComponents({newData}) {
-
   const [data, setData] = useState([]);
   const localData = JSON.parse(localStorage.getItem("user-info"));
   const { category, title } = newData;
-  // const [isLoading, setIsloading] = useState(false)
 
   useEffect(() => {
-    let url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${category}"}`
+    let url = `${ApiUrl.songList}?filter={"mood":"${category}"}`
     async function fetchData() {
       try {
         const response = await fetch(url,

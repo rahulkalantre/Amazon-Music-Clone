@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { memo } from "react";
 import { FaRandom, FaStepBackward, FaPlay, FaPause, FaStepForward, FaRedo } from "react-icons/fa";
 import { AiOutlineSound } from "react-icons/ai";
 import "../MusicPlayer/MusicPlayer.css";
@@ -100,4 +101,4 @@ const MusicPlayer = () => {
   );
 };
 
-export default MusicPlayer;
+export default memo(MusicPlayer);

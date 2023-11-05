@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import { Link } from "react-router-dom";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
@@ -11,7 +12,7 @@ const PodCasts = () => {
   const actionHandler = (mood) => {
     async function fetchData() {
       try {
-        const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${mood}"}`;
+        let url = `${ApiUrl.songList}?filter={"mood":"${mood}"}`;
         const getData = await fetch(url, {
           method: "GET",
           headers: {

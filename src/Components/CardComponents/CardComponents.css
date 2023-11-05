@@ -119,3 +119,59 @@
   font-size: 75px;
   cursor: pointer;
 }
+
+/* For screen widths up to 768px */
+@media (max-width: 768px) {
+  .romantic-songs-carousel {
+    width: 100%;
+  }
+
+  .romantic-songs-title {
+    padding-top: 30px;
+    justify-content: center;
+  }
+
+  .romantic-songs-heading {
+    margin-left: 15px;
+    font-size: 28px;
+  }
+
+  .song-card {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+
+  .romantic-song-overlay {
+    left: 12px;
+    height: 170px;
+    width: 170px;
+  }
+}
+
+/* For screen widths from 768px to 1024px */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  .romantic-songs-carousel {
+    width: 200%;
+  }
+
+  .romantic-songs-title {
+    padding-top: 40px;
+  }
+
+  .romantic-songs-heading {
+    margin-left: 20px;
+    font-size: 32px;
+  }
+
+  .song-card {
+    height: 220px;
+    margin-bottom: 15px;
+  }
+
+  .romantic-song-overlay {
+    left: 20px;
+    height: 190px;
+    width: 190px;
+  }
+} */

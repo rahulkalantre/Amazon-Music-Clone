@@ -4,6 +4,7 @@ import logo from "../../Assets/logo.png";
 import Toaster from "../../Assets/Toster";
 import ReactDOM from "react-dom";
 import "../SignIn/SignIn.css";
+import { ApiUrl } from "../../Data/ApiUrl";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const SignIn = () => {
         projectID: "edlpgt620a4c",
       };
       let getData = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/login",
+        ApiUrl.signIn,
         {
           method: "POST",
           headers: Header,

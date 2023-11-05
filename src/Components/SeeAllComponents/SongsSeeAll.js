@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import { useParams } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
@@ -18,7 +19,7 @@ function SongsSeeAll() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"${query}"}&page=${page}&limit=25`,
+          `${ApiUrl.songList}?filter={"mood":"${query}"}&page=${page}&limit=25`,
           {
             method: "GET",
             headers: {

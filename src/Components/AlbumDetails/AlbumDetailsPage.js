@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsFillPlayFill, BsThreeDots } from "react-icons/bs";
+import { memo } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import { GrFormAdd } from "react-icons/gr";
 import { BiSolidShareAlt } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/ai";
@@ -18,7 +20,7 @@ const AlbumDetailsPage = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/music/artist/${myParam}`,
+          `${ApiUrl.albumList}${myParam}`,
           {
             method: "GET",
             headers: {
@@ -119,4 +121,4 @@ const AlbumDetailsPage = () => {
   );
 };
 
-export default AlbumDetailsPage;
+export default memo(AlbumDetailsPage);

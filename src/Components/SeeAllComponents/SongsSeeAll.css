@@ -82,11 +82,25 @@
   cursor: pointer;
 }
 
-/* Responsive styles using media queries */
+/* For screen widths up to 768px */
 
 @media (max-width: 768px) {
+  .allportrait-title {
+    padding-top: 30px;
+    justify-content: center;
+  }
+
+  .allportrait-name {
+    padding-top: 50px;
+    padding-left: 15px;
+    margin-left: 0;
+    font-size: 32px;
+  }
+
   .allportrait-card {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 42px;
+    padding: 20px;
   }
 
   .allportrait-data {
@@ -94,41 +108,35 @@
     width: 180px;
   }
 
-  .allportrait-name {
-    font-size: 30px;
-  }
-
-  .icon1,
-  .icon3 {
-    font-size: 24px;
-  }
-
-  .icon2 {
-    font-size: 60px;
+  .overlay {
+    height: 70%;
+    width: 70%;
   }
 }
 
-@media (max-width: 480px) {
+/* For screen widths from 768px to 1024px */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  .allportrait-title {
+    padding-top: 40px;
+  }
+
+  .allportrait-name {
+    padding-top: 60px;
+    font-size: 36px;
+  }
+
   .allportrait-card {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 8px;
   }
 
   .allportrait-data {
-    height: 140px;
-    width: 140px;
-    margin-bottom: 35px;
+    height: 200px;
+    width: 200px;
   }
 
-  .allportrait-name {
-    font-size: 24px;
+  .overlay {
+    height: 75%;
+    width: 75%;
   }
-
-  .icon1,
-  .icon3 {
-    font-size: 20px;
-  }
-
-  .icon2 {
-    font-size: 50px;
-  }
-}
+} */

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchPage from "../SearchBar/SearchPage";
@@ -15,7 +16,7 @@ function SuggestionPage() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/music/song?search={"title":"${query}"}`,
+          `${ApiUrl.songList}?search={"title":"${query}"}`,
           {
             method: "GET",
             headers: {

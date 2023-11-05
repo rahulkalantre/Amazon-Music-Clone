@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { memo } from "react";
+import { ApiUrl } from "../../Data/ApiUrl";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../TrendingSongs/TrendingSongs.css";
 import Slider from "react-slick";
@@ -19,7 +21,6 @@ const TrendingSongs = () => {
   };
 
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
-
   const [data, setData] = useState([]);
 
   // const [playSong, setPlaySong] = useState(false);
@@ -31,7 +32,7 @@ const TrendingSongs = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://academics.newtonschool.co/api/v1/music/song",
+          ApiUrl.songList,
           {
             method: "GET",
             headers: {
@@ -95,4 +96,4 @@ const TrendingSongs = () => {
   );
 };
 
-export default TrendingSongs;
+export default memo(TrendingSongs);
