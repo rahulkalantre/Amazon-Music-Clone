@@ -11,6 +11,8 @@ import "../AlbumDetails/AlbumDetailsPage.css"
 const AlbumDetailsPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get("id");
+  const category = urlParams.get("category");
+  const image = urlParams.get("img") 
   const [isHovered, setIsHovered] = useState(false);
   const [data, setData] = useState([]);
   const { playSong, setSongDetails, setIsPlaying, setPlaySong, setCurrentIndex } = useMusicPlayer()
@@ -23,10 +25,10 @@ const AlbumDetailsPage = () => {
     <>
       <div className="adp-background">
         <div className="adp-card">
-          <img src={data?.thumbnail} alt="image-new" className="adp-image" />
+          <img src={image} alt="image-new" className="adp-image" />
           <div className="adp-content">
             <h6 className="adp-subtitle">PLAYLIST</h6>
-            <h1 className="adp-title">{data[0]?.mood.toUpperCase()} SONGS</h1>
+            <h1 className="adp-title">{category?.toUpperCase()} SONGS</h1>
             <h5 className="adp-tagline">Curated by Amazon Music</h5>
             {/* <p className="adp-description">{data?.description}</p> */}
             <br />

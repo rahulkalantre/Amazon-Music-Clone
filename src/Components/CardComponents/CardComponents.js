@@ -48,7 +48,7 @@ function CardComponents({ newData }) {
             <Link
               to={
                 localData?.status === "success"
-                  ? `/albumDetailsPage?id=${item?.artist[0]?._id}`
+                  ? `/albumDetailsPage?id=${item?.artist[0]?._id}&category=${category}&img=${item.artist[0]?.image}`
                   : `/aleartPage`
               }
               params={item?.artist[0]?._id}
