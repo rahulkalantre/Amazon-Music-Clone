@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { ApiUrl } from "../../Data/ApiUrl";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import SearchPage from "../SearchBar/SearchPage";
-import MusicPlayer from "../MusicPlayer/MusicPlayer";
-import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
+import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import SearchPage from "../SearchBar/SearchPage"
+import MusicPlayer from "../MusicPlayer/MusicPlayer"
+import { SuggestionPageFunction } from "../../Data/ApiFunctions"
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider"
 import "../SuggetionPage/SuggestionPage.css"
 
 function SuggestionPage() {
@@ -13,29 +12,9 @@ function SuggestionPage() {
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          `${ApiUrl.songList}?search={"title":"${query}"}`,
-          {
-            method: "GET",
-            headers: {
-              projectId: "edlpgt620a4c",
-            },
-          }
-        );
-        const json = await response.json();
-        console.log(json.data);
-        setData(json.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    if (query.trim() !== "") {
-      fetchData();
-    }
+    SuggestionPageFunction({setData, query});
   }, [query]);
-  console.log(data);
+  
   return (
     <>
     <h2 className="suggestion-heading"> Songs Search By Title </h2>

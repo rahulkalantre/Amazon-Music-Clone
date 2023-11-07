@@ -1,32 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { ApiUrl } from "../../Data/ApiUrl";
-import { Link } from "react-router-dom";
-import MusicPlayer from "../MusicPlayer/MusicPlayer";
-import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
-import "../PodCasts/PodCasts.css";
+import React, { useState, useEffect } from "react"
+import MusicPlayer from "../MusicPlayer/MusicPlayer"
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider"
+import { PodCastsFunction } from "../../Data/ApiFunctions"
+import "../PodCasts/PodCasts.css"
 
 const PodCasts = () => {
   const [data, setData] = useState([]);
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
 
   const actionHandler = (mood) => {
-    async function fetchData() {
-      try {
-        let url = `${ApiUrl.songList}?filter={"mood":"${mood}"}`;
-        const getData = await fetch(url, {
-          method: "GET",
-          headers: {
-            projectID: "edlpgt620a4c",
-          },
-        });
-        const json = await getData.json();
-        console.log(json.data);
-        setData(json.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
+    PodCastsFunction({setData, mood})
   };
 
   return (

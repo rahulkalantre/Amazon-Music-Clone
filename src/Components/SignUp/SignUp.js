@@ -1,44 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { ApiUrl } from "../../Data/ApiUrl";
-import ReactDOM from "react-dom";
-import { useNavigate } from "react-router-dom";
-import Toaster from "../../Assets/Toster";
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import ReactDOM from "react-dom"
+import Toaster from "../../Assets/Toster"
+import { SignUpFunction } from "../../Data/ApiFunctions"
+import "../SignUp/SignUp.css"
 import logo from "../../Assets/logo.png"
-import "../SignUp/SignUp.css";
-import { Link } from "react-router-dom";
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [isMessageShown, setIsMessageShown] = useState(false);
   const [toast, setToast] = useState({
     status: "",
     message: "",
   });
-  const [isMessageShown, setIsMessageShown] = useState(false);
+
   async function AmazonMusicSingUP() {
     try {
-      let item = {
-        name: name,
-        email: email,
-        password: password,
-        appType: "music",
-      };
-      const Header = {
-        "Content-Type": "application/json",
-        projectId: "edlpgt620a4c",
-      };
-      let getData = await fetch(
-        ApiUrl.signUp,
-        {
-          method: "POST",
-          headers: Header,
-          body: JSON.stringify(item),
-        }
-      );
-
-      let response = await getData.json();
+      const response = await SignUpFunction({name, email, password});
       console.log(response);
       if (response.status === "success") {
         setToast({
@@ -51,7 +33,7 @@ const SignUp = () => {
         setPassword("");
         setTimeout (() => {
           navigate("/signIn");
-        }, 1000);
+        }, 1200);
       } else {
         setIsMessageShown(true);
         setToast({
@@ -63,6 +45,7 @@ const SignUp = () => {
       console.log(e);
     }
   }
+
   return ReactDOM.createPortal(
     <div className="signup-container">
       <div className="signup-form">
@@ -104,9 +87,6 @@ const SignUp = () => {
         </p>
         </Link>
       </div>
-      {/* {toast.status == "success" ||
-      toast.status == "error" ||
-      toast.status == "workingOn"  */}
       {isMessageShown ? (
         <Toaster status={toast.status} message={toast.message} />
       ) : (

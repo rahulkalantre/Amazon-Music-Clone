@@ -7,7 +7,7 @@ export default function Toaster({ status, message }) {
   if (status === "success") {
     toast.success(message, {
       position: "top-right",
-      autoClose: 4000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -18,7 +18,7 @@ export default function Toaster({ status, message }) {
   } else if (status === "workingOn") {
     toast.info(message, {
       position: "top-right",
-      autoClose: 4000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -29,7 +29,7 @@ export default function Toaster({ status, message }) {
   } else {
     toast.error(message, {
       position: "top-right",
-      autoClose: 4000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -43,7 +43,7 @@ export default function Toaster({ status, message }) {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={4000}
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

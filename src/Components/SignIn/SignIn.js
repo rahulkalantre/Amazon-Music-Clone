@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../../Assets/logo.png";
-import Toaster from "../../Assets/Toster";
-import ReactDOM from "react-dom";
-import "../SignIn/SignIn.css";
-import { ApiUrl } from "../../Data/ApiUrl";
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import ReactDOM from "react-dom"
+import Toaster from "../../Assets/Toster"
+import { SignInFunction } from "../../Data/ApiFunctions"
+import "../SignIn/SignIn.css"
+import logo from "../../Assets/logo.png"
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -16,26 +16,10 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [isMessageShown, setIsMessageShown] = useState(false);
 
+
   async function AmazonMusicSingIn() {
     try {
-      let item = {
-        email: email,
-        password: password,
-        appType: "music",
-      };
-      const Header = {
-        "Content-Type": "application/json",
-        projectID: "edlpgt620a4c",
-      };
-      let getData = await fetch(
-        ApiUrl.signIn,
-        {
-          method: "POST",
-          headers: Header,
-          body: JSON.stringify(item),
-        }
-      );
-      let response = await getData.json();
+      const response = await SignInFunction({email, password});
       console.log(response);
       if (response.status == "success") {
         setToast({
@@ -56,7 +40,8 @@ const SignIn = () => {
           message: response.message,
         });
       }
-    } catch (e) {
+    } 
+    catch (e) {
       console.log(e);
     }
   }
@@ -101,9 +86,6 @@ const SignIn = () => {
           </Link>
         </div>
       </div>
-      {/* {toast.status == "success" ||
-      toast.status == "error" ||
-      toast.status == "workingOn"  */}
       { isMessageShown ? (
         <Toaster status={toast.status} message={toast.message} />
       ) : (
@@ -113,5 +95,4 @@ const SignIn = () => {
     document.getElementById("SignIn")
   );
 };
-
 export default SignIn;

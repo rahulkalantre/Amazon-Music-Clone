@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { BsFillPlayFill, BsThreeDots } from "react-icons/bs";
-import { memo } from "react";
-import { ApiUrl } from "../../Data/ApiUrl";
-import { GrFormAdd } from "react-icons/gr";
-import { BiSolidShareAlt } from "react-icons/bi";
-import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/ai";
-import "../AlbumDetails/AlbumDetailsPage.css";
-import MusicPlayer from "../MusicPlayer/MusicPlayer";
-import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
+import React, { useEffect, useState } from "react"
+import { BsFillPlayFill, BsThreeDots } from "react-icons/bs"
+import { GrFormAdd } from "react-icons/gr"
+import { BiSolidShareAlt } from "react-icons/bi"
+import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/ai"
+import MusicPlayer from "../MusicPlayer/MusicPlayer"
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider"
+import { AlbumDetailsPageFunction } from "../../Data/ApiFunctions"
+import "../AlbumDetails/AlbumDetailsPage.css"
 
 const AlbumDetailsPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -17,30 +16,9 @@ const AlbumDetailsPage = () => {
   const { playSong, setSongDetails, setIsPlaying, setPlaySong, setCurrentIndex } = useMusicPlayer()
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          `${ApiUrl.albumList}${myParam}`,
-          {
-            method: "GET",
-            headers: {
-              projectId: "knjxpr9vh9wr",
-            },
-          }
-        );
-        const json = await response.json();
-        console.log(json);
-        let romanticSongs = json.data.songs.filter(
-          (item) => item.mood === "romantic"
-        );
-        setData(romanticSongs);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
+    AlbumDetailsPageFunction ({setData, myParam});
   }, []);
-  console.log(data);
+  
   return (
     <>
       <div className="adp-background">
@@ -121,4 +99,4 @@ const AlbumDetailsPage = () => {
   );
 };
 
-export default memo(AlbumDetailsPage);
+export default AlbumDetailsPage;

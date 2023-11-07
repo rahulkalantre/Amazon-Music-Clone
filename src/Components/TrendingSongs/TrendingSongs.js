@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { memo } from "react";
-import { ApiUrl } from "../../Data/ApiUrl";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "../TrendingSongs/TrendingSongs.css";
-import Slider from "react-slick";
-import { AiOutlinePlus } from "react-icons/ai";
-import { BsPlayCircle, BsThreeDots } from "react-icons/bs";
-import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
+import React, { useEffect, useState } from "react"
+import Slider from "react-slick"
+import { BsPlayCircle, BsThreeDots } from "react-icons/bs"
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider"
+import { TrendingSongsFunction } from "../../Data/ApiFunctions"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import "../TrendingSongs/TrendingSongs.css"
 
 const TrendingSongs = () => {
   const settings = {
@@ -23,31 +21,8 @@ const TrendingSongs = () => {
   const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
   const [data, setData] = useState([]);
 
-  // const [playSong, setPlaySong] = useState(false);
-  // const [songDetails, setSongDetails] = useState({});
-  // const [isPlaying, setIsPlaying] = useState(true);
-
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          ApiUrl.songList,
-          {
-            method: "GET",
-            headers: {
-              projectId: "knjxpr9vh9wr",
-            },
-          }
-        );
-        const json = await response.json();
-        setData(json.data);
-        console.log(json.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
+    TrendingSongsFunction({setData});
   }, []);
 
   return (
@@ -96,4 +71,4 @@ const TrendingSongs = () => {
   );
 };
 
-export default memo(TrendingSongs);
+export default TrendingSongs;
