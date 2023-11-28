@@ -4,25 +4,7 @@ import TrendingSongs from "../TrendingSongs/TrendingSongs";
 import CardComponents from "../CardComponents/CardComponents";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
-
-const arr = [
-  {
-    "category": "romantic",
-    "title": "Romantic Songs"
-  },
-  {
-    "category": "excited",
-    "title": "Excited Songs"
-  },
-  {
-    "category": "happy",
-    "title": "Happy Songs"
-  },
-  {
-    "category": "sad",
-    "title": "Sad Songs"
-  },
-]
+import { arr } from "../../Data/Category"; 
 
 const HomePage = () => {
   const { playSong } = useMusicPlayer()

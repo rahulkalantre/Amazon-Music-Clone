@@ -32,7 +32,7 @@ const AlbumDetailsPage = () => {
             <h5 className="adp-tagline">Curated by Amazon Music</h5>
             {/* <p className="adp-description">{data?.description}</p> */}
             <br />
-            <p>50 SONGS • 3 HOURS AND 27 MINUTES</p>
+            <p className="adp-p-tag">50 SONGS • 3 HOURS AND 27 MINUTES</p>
             <div className="actions">
               <button className="adp-play-button">
                 <BsFillPlayFill /> Play

@@ -22,7 +22,7 @@ function SuggestionPage() {
         <SearchPage />
       ) : (
         <div className="grid-containerr">
-          {data.length > 0 ? (
+          {data?.length > 0 ? (
             data?.map((item, index) => (
               <div className="grid-itemm" key={index}
                 onClick={() => {

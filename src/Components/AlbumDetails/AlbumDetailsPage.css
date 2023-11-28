@@ -31,7 +31,7 @@
 }
 
 .adp-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-top: 0px;
   font-weight: bold;
 }
@@ -173,4 +173,87 @@
 
 .sdp-image-card:hover .adp-play-icon {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .adp-background {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+  }
+
+  .adp-card {
+    padding: 10px;
+  }
+
+  .adp-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* .actions {
+    flex-direction: column;
+  } */
+
+  .adp-play-button {
+    width: 80px;
+    height: 40px;
+  }
+
+  .adp-icon-button {
+    padding: 6px 10px;
+  }
+
+  .adp-song-number {
+    font-size: 12px;
+  }
+
+  .adp-song-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .adp-subtitle {
+    font-weight: bold;
+    color: aqua;
+    font-size: 10px;
+  }
+  
+  .adp-title {
+    font-size: 1.5rem;
+    margin-top: 0px;
+    font-weight: bold;
+  }
+  
+  .adp-tagline {
+    font-size: 1rem;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .adp-song-title {
+    font-size: 12px;
+  }
+
+  .adp-duration {
+    font-size: 12px;
+  }
+
+  .adp-icon {
+    font-size: 18px;
+  }
+
+  .adp-play-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .adp-play-icon-inner {
+    font-size: 16px;
+  }
 }

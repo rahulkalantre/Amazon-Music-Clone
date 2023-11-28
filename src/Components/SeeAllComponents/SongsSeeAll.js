@@ -28,7 +28,6 @@ function SongsSeeAll() {
           }
         );
         const json = await response.json();
-        console.log(json);
         setData((prev) => [...prev, ...json.data]);
       } catch (error) {
         console.error("Error fetching data:", error);

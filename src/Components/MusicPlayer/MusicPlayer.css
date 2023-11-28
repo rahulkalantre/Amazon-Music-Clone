@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(15,17,17,.6);
+  border-top: 1px solid rgba(15, 17, 17, 0.6);
   background-color: black;
   padding: 5px;
   border-radius: 5px;
@@ -91,3 +91,37 @@
   height: 10px;
 }
 
+/* Media Quries Class */
+
+@media (max-width: 786px) {
+  .music-player {
+    padding: 2px;
+    font-size: 14px;
+  }
+
+  .song-details {
+    width: 25%;
+  }
+
+  .album-cover {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  .song-heading {
+    font-size: 16px;
+  }
+
+  .control-icon,
+  .control-icon-set,
+  .control-icon-volume,
+  .play-pause {
+    font-size: 16px;
+    margin: 0 5px;
+  }
+
+  .progress-bar-container {
+    margin: 5px 0;
+  }
+}

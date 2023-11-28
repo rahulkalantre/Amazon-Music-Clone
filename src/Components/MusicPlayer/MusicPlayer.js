@@ -28,7 +28,7 @@ const MusicPlayer = () => {
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying, currentindex, playSong]);
+  }, [playSong, isPlaying, currentindex]);
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -76,6 +76,7 @@ const MusicPlayer = () => {
         ) : (
           <FaPlay className="control-icon play-pause" onClick={togglePlayPause} />
         )}
+        {console.log(songDetails?.songs[currentindex]?.audio_url)}
         <audio src={songDetails?.songs[currentindex]?.audio_url} ref={audioRef} />
         <FaStepForward className="control-icon" onClick={() => setCurrentIndex(currentindex + 1)} />
         <FaRedo className="control-icon" onClick={redoSong} />

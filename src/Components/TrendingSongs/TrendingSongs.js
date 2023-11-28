@@ -52,6 +52,7 @@ const TrendingSongs = () => {
                 setCurrentIndex(index)
               }}
             >
+            
               <img
                 src={item?.thumbnail}
                 alt="01 Slide"

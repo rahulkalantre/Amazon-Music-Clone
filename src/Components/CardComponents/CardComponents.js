@@ -54,7 +54,7 @@ function CardComponents({ newData }) {
               params={item?.artist[0]?._id}
             >
               <div className="song-card">
-                <div>
+                <div className="song-card-image">
                   <img
                     src={item.artist[0]?.image}
                     alt="01 Slide"

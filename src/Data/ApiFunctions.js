@@ -55,10 +55,10 @@ export const SuggestionPageFunction = ({setData, query}) => {
         }
       );
       const json = await response.json();
-      console.log(json.data);
+      // console.log(json.data);
       setData(json.data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("Error fetching data:", error);
     }
   }
   if (query.trim() !== "") {
