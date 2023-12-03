@@ -45,3 +45,10 @@
     color: #666;
     color: white;
 }
+
+.error-message {
+    color: white;
+    display: flex;
+    text-align: center;
+    font-size: 30px;
+}
