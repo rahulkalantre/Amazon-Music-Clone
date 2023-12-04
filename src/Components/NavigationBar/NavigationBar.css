@@ -60,11 +60,13 @@
   border: none;
   border-radius: 15px 0px 0px 15px;
 }
+
 .right-div {
   display: flex;
   align-items: center;
 }
-.right-div a {
+
+.main-search a {
   text-decoration: none;
   margin-left: 20px;
 }

@@ -52,7 +52,7 @@ const NavigationBar = () => {
             <FaHeadphonesAlt className="nav-icons" /> Library
           </Nav.Link>
         </Nav>
-        <div className="ml-auto d-flex align-items-center">
+        <div className="ml-auto d-flex align-items-center main-search">
           <Link
             to={localData?.status === "success" ? `/search` : `/aleartPage`}
             className="d-flex align-items-center"

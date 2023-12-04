@@ -2,10 +2,6 @@ body {
   background-color: black;
 }
 
-/* .podcast-page {
-  background-color: black;
-} */
-
 .waiting-heading {
   margin-top: 90px;
   text-align: center;
@@ -46,25 +42,6 @@ body {
   color: black;
 }
 
-/* .happy {
-  background: linear-gradient(to right, #64707d, #3c4852, #007bff);
-}
-
-.sad {
-  background: linear-gradient(to right, #f8d02f, #ff8c00, #ff5722);
-}
-
-.romantic {
-  background: linear-gradient(to right, #ff5f6d, #ffc371);
-}
-
-.excited {
-  background: linear-gradient(to right, #9f7aea, #ff77aa);
-}
-
-.mood-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-} */
 
 .grid-container {
   display: grid;
@@ -90,17 +67,91 @@ body {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  /* border-radius: 50%; */
   margin-bottom: 10px;
-  /* height: auto;
-  max-height: 150px; */
 }
 
 .grid-item-title {
-  /* margin-top: 10px; */
   font-size: 16px;
   text-align: center;
   font-weight: bold;
   color: white;
-  /* overflow: hidden; */
+}
+
+@media (max-width: 768px) {
+  body {
+    background-color: black;
+  }
+  
+  .waiting-heading {
+    margin-top: 90px;
+    text-align: center;
+    color: white;
+  }
+  
+  .search-heading-mood {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .mood-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+  }
+  
+  .mood-button {
+    flex: 0 0 calc(33.33% - 20px);
+    height: 50px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: aqua;
+    color: black;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 768px;
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 0.5px solid #ccc;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .grid-item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .grid-item-title {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
 }

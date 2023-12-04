@@ -52,11 +52,21 @@
 .romantic-song-card-heading {
   padding: 0px 10px 0px 0px;
   color: white;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .description {
   padding: 0px 10px 0px 0px;
   color: white;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .control-dots {
@@ -120,64 +130,71 @@
   cursor: pointer;
 }
 
-/* For screen widths up to 768px */
-
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .romantic-songs-carousel {
-    width: 20%;
+    width: 100%;
+    margin-left: 0;
   }
 
   .romantic-songs-title {
-    padding-top: 30px;
-    justify-content: center;
-  }
-
-  .romantic-songs-heading {
-    margin-left: 15px;
-    font-size: 28px;
+    padding-top: 20px;
+    flex-direction: row;
+    text-align: center;
   }
 
   .song-card {
     width: 100%;
-    height: 200px;
     margin-bottom: 10px;
-    border: 1px solid blue;
+    height: 150px;
   }
 
-  .song-card-image img {
-    border: 2px solid aqua;
+  .song-card-image {
+    height: 120px;
+    width: 120px;
   }
 
-  .romantic-song-overlay {
-    left: 12px;
-    height: 170px;
-    width: 170px;
-  }
-}
-
-/* For screen widths from 768px to 1024px */
-/* @media (min-width: 768px) and (max-width: 1024px) {
-  .romantic-songs-carousel {
-    width: 200%;
+  .carousel .song-card img {
+    border-radius: 10px;  
   }
 
-  .romantic-songs-title {
-    padding-top: 40px;
+  .carousel .slider-wrapper {
+    margin-left: -20px;
+  }
+
+  .romantic-songs-carousel .carousel.carousel-slider {
+    margin-left: 0;
+  }
+
+  .romantic-songs-carousel .carousel .control-prev.control-arrow {
+    margin-left: 0;
+  }
+
+  .romantic-songs-carousel .carousel .control-next.control-arrow {
+    margin-right: 0;
   }
 
   .romantic-songs-heading {
-    margin-left: 20px;
-    font-size: 32px;
+    margin-left: 15px;
+    font-size: 25px;
   }
 
-  .song-card {
-    height: 220px;
-    margin-bottom: 15px;
+  .romantic-song-card-heading {
+    padding: 0;
+    margin-top: -15px;
+    font-size: 14px;
+  }
+
+  .description {
+    padding: 0;
+    margin-top: -5px;
+    font-size: 10px;
+  }
+
+  .see-all-button {
+    margin: 10px;
   }
 
   .romantic-song-overlay {
-    left: 20px;
-    height: 190px;
-    width: 190px;
+    display: none;
   }
-} */
+}

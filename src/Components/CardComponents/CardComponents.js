@@ -40,7 +40,7 @@ function CardComponents({ newData }) {
         showThumbs={false} // Hide thumbnail images
         infiniteLoop={true} // Enable infinite loop
         centerMode={true} // Center the current slide
-        centerSlidePercentage={11} // Show three items at a time
+        centerSlidePercentage={30} // Show three items at a time
         emulateTouch={false}
       >
         {data?.length > 0 &&

@@ -112,11 +112,16 @@
 
   .playlist-item {
     width: 50%;
-    margin-left: 0;
+    margin-left: 0px;
   }
 
   .playlist-heading {
     margin-left: 15px;
     font-size: 20px; 
+  }
+
+  .slick-next,
+  .slick-prev {
+    display: block;
   }
 }

@@ -84,7 +84,7 @@ function SongsSeeAll() {
                 <img
                   src={item.artist[0]?.image}
                   alt="01 Slide"
-                  style={{ width: "80%", height: "80%" }}
+                  // style={{ width: "80%", height: "80%" }}
                   className="hover-image allportrait-img"
                 />
               </div>
