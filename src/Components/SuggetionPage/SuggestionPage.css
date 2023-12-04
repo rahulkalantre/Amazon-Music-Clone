@@ -20,7 +20,8 @@
   align-items: center;
   border-radius: 8px;
   margin: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
+  border: none;
   padding: 20px;
   text-align: center;
 }
@@ -80,7 +81,8 @@
     align-items: center;
     border-radius: 5px;
     margin: 0px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+    border: none;
     padding: 10px;
     text-align: center;
   }

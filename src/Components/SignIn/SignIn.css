@@ -78,3 +78,11 @@
 .signIn-password {
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .signin-form {
+    margin-top: 35px;
+    width: 90%;
+    height: 60%;
+  }
+}

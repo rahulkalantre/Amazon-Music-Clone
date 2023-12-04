@@ -77,3 +77,11 @@
 .signUp-password {
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .signup-form {
+    margin-top: 35px;
+    width: 90%;
+    height: 65%;
+  }
+}

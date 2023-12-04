@@ -93,10 +93,18 @@
 
 /* Media Quries Class */
 
-@media (max-width: 786px) {
+@media (max-width: 768px) {
   .music-player {
     padding: 2px;
     font-size: 14px;
+  }
+
+  .song-info {
+    display: none;
+  }
+
+  .volume-slider {
+    display: none;
   }
 
   .song-details {
@@ -109,19 +117,19 @@
     margin-right: 5px;
   }
 
-  .song-heading {
+  /* .song-heading {
     font-size: 16px;
-  }
+  } */
 
   .control-icon,
   .control-icon-set,
-  .control-icon-volume,
   .play-pause {
     font-size: 16px;
     margin: 0 5px;
   }
 
-  .progress-bar-container {
-    margin: 5px 0;
+  .control-icon-volume {
+    font-size: 24px;
+    margin: 0 5px;
   }
 }
