@@ -65,3 +65,31 @@
   margin-bottom: 20px;
   color: white;
 }
+
+/* Media query for screens up to 768px */
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .button-container {
+    flex-direction: row;
+  }
+
+  .custom-button {
+    font-size: 14px;
+  }
+
+  .alert-message-button {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: white;
+    text-align: center;
+  }
+
+  .close-button {
+    top: 30%;
+    right: 5%;
+  }
+}

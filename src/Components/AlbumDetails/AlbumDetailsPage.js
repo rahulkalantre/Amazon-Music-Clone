@@ -33,7 +33,7 @@ const AlbumDetailsPage = () => {
             {/* <p className="adp-description">{data?.description}</p> */}
             <br />
             <p className="adp-p-tag">50 SONGS • 3 HOURS AND 27 MINUTES</p>
-            <div className="actions">
+            {/* <div className="actions">
               <button className="adp-play-button">
                 <BsFillPlayFill /> Play
               </button>
@@ -46,7 +46,7 @@ const AlbumDetailsPage = () => {
               <button className="adp-icon-button">
                 <BsThreeDots />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         {data.length > 0 &&
@@ -55,14 +55,8 @@ const AlbumDetailsPage = () => {
               className="adp-song-card"
               onMouseEnter={() => setIsHovered(index)}
               onMouseLeave={() => setIsHovered(-1)}
-            >
-              <div className="adp-song-info" key={index}>
-                <div className="adp-song-number">{index}</div>
-                <img
-                  src={item?.thumbnail}
-                  alt="album-banner"
-                  className="adp-song-image"
-                  onClick={() => {
+
+              onClick={() => {
                     setPlaySong(true);
                     setIsPlaying(true)
                     setSongDetails({
@@ -74,6 +68,13 @@ const AlbumDetailsPage = () => {
                     });
                     setCurrentIndex(index)
                   }}
+            >
+              <div className="adp-song-info" key={index}>
+                <div className="adp-song-number">{index}</div>
+                <img
+                  src={item?.thumbnail}
+                  alt="album-banner"
+                  className="adp-song-image"
                 />
                 {isHovered === index && (
                   <div className="adp-play-icon">
@@ -82,7 +83,7 @@ const AlbumDetailsPage = () => {
                 )}
                 <div className="adp-song-text">
                   <h5>{item?.title}</h5>
-                  <p> Artist : Unknown</p>
+                  {/* <p> Artist : Unknown</p> */}
                 </div>
               </div>
               <div className="adp-song-title">

@@ -1,47 +1,54 @@
-import React, { useEffect, useState } from "react"
-import Slider from "react-slick"
-import { BsPlayCircle, BsThreeDots } from "react-icons/bs"
-import { useMusicPlayer } from "../../Context/MusicPlayerProvider"
-import { TrendingSongsFunction } from "../../Data/ApiFunctions"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import "../TrendingSongs/TrendingSongs.css"
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import { BsPlayCircle } from "react-icons/bs";
+import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
+import { TrendingSongsFunction } from "../../Data/ApiFunctions";
+import "../TrendingSongs/TrendingSongs.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 const TrendingSongs = () => {
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 2,
-    speed: 500,
-    rows: 3,
-    slidesPerRow: 1,
-  };
-
-  const { playSong, songDetails, isPlaying, setSongDetails, setIsPlaying, setPlaySong, currentindex, setCurrentIndex } = useMusicPlayer()
   const [data, setData] = useState([]);
 
+  const {
+    playSong,
+    songDetails,
+    isPlaying,
+    setSongDetails,
+    setIsPlaying,
+    setPlaySong,
+    currentindex,
+    setCurrentIndex,
+  } = useMusicPlayer();
+
   useEffect(() => {
-    TrendingSongsFunction({setData});
+    TrendingSongsFunction({ setData });
   }, []);
 
   return (
     <>
-      <div className="trending-playlists">
-        <h2 className="playlist-heading">Trending Playlists</h2>
-        {/* <div className="see-all-button">
-          <button className="see-all-btn">SEE ALL</button>
-        </div> */}
-      </div>
-      <br />
-      <Slider {...settings}>
+    <div className="trending-songs-title">
+      <h2 className="trending-songs-heading">Trending Songs</h2>
+    </div>
+      {/* <Slider {...settings}> */}
+      <Carousel
+        className="trending-songs-carousel"
+        showArrows={true} // Show navigation arrows
+        showStatus={true} // Hide status indicator
+        showThumbs={false} // Hide thumbnail images
+        infiniteLoop={true} // Enable infinite loop
+        centerMode={true} // Center the current slide
+        centerSlidePercentage={window.innerWidth <= "768" ? 30 : 11} // Show three items at a time
+        emulateTouch={false}
+      >
         {data.length > 0 &&
           data?.map((item, index) => (
             <div
-              className="playlist-item"
+              className="song-card-"
+              key={index}
               onClick={() => {
                 setPlaySong(true);
-                setIsPlaying(true)
+                setIsPlaying(true);
                 setSongDetails({
                   img: item?.thumbnail || "",
                   title: item?.title || "",
@@ -49,25 +56,29 @@ const TrendingSongs = () => {
                   songs: data || [],
                   index: index,
                 });
-                setCurrentIndex(index)
+                setCurrentIndex(index);
               }}
             >
-            
-              <img
-                src={item?.thumbnail}
-                alt="01 Slide"
-                className="playlist-image"
-              />
-              <BsPlayCircle className="play-icon" />
-              <div className="playlist-details">
-                <h5 className="playlist-title">{item?.title}</h5>
-                <p className="playlist-artists">
-                  {item?.artist.map((text) => text?.name).join(", ")}
-                </p>
+              <div className="song-card">
+                <div className="song-card-image">
+                  <img
+                    src={item?.thumbnail}
+                    alt="Song Thumbnail"
+                    style={{ width: "80%", height: "80%" }}
+                    className="song-image song-card"
+                  />
+                </div>
+                {/* <div className="song-details"> */}
+                  <h6 className="trending-song-card-heading">{item?.title}</h6>
+                  <p className="description">
+                    {item?.artist.map((text) => text?.name).join(", ")}
+                  </p>
+                {/* </div> */}
               </div>
             </div>
           ))}
-      </Slider>
+        {/* </Slider> */}
+      </Carousel>
     </>
   );
 };

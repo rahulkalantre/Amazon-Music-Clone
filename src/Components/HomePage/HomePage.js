@@ -11,12 +11,12 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+      <TrendingSongs />
       {
          arr?.map((item, index) => {
           return <CardComponents newData = {item} />
         })
       }
-      <TrendingSongs />
       { playSong && (<MusicPlayer/> )}
     </div>
   );
