@@ -41,26 +41,3 @@
   display: block;
   /* cursor: pointer; */
 }
-
-/* .menu-item {
-  width: 100%;
-  display: block;
-  font-weight: bold;
-  border: 2px solid #25d1da;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 14px;
-  text-align: center;
-  color: black;
-  background-color: #25d1da;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu-item {
-  background-color: #a8edf0;
-  transform: scale(1.05);
-}
-
-.menu-item {
-  ring: 4;
-} */

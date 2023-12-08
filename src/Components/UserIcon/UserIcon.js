@@ -33,9 +33,9 @@ const Dropdown = () => {
               </div>
             </Link>
           )}
-          <Link to="/subscriptions">
+          {/* <Link to="/subscriptions">
             <div className="menu-item">Subscriptions</div>
-          </Link>
+          </Link> */}
         </div>
       )}
     </div>
