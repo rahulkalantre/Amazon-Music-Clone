@@ -33,7 +33,6 @@ function CardComponents({ newData }) {
         </Link>
       </div>
       <br />
-      <div className="main-scroll">
         <Carousel
           className="romantic-songs-carousel"
           showArrows={true} // Show navigation arrows
@@ -75,7 +74,6 @@ function CardComponents({ newData }) {
               </Link>
             ))}
         </Carousel>
-      </div>
     </>
   );
 }

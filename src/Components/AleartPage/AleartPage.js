@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../AleartPage/AleartPage.css";
+import React from "react"
+import { Link } from "react-router-dom"
+import "../AleartPage/AleartPage.css"
 
 const AleartPage = () => {
   return (
@@ -15,7 +15,7 @@ const AleartPage = () => {
       <div className="button-container">
         <Link to="/signIn">
           <button className="custom-button primary-button">
-            ALEARDY A CUSTMER SIGN IN
+            ALEARDY A CUSTOMER SIGN IN
           </button>
         </Link>
         <Link to="/signUp">

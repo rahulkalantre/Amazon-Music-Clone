@@ -1,79 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoHome } from "react-icons/go";
 import { MdPodcasts } from "react-icons/md";
 import { FaHeadphonesAlt } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import UserIcon from "../UserIcon/UserIcon";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavigationBar/NavigationBar.css";
 const NavigationBar = () => {
-  const [navCollapse, setNavCollapse] = useState(false);
-  const [navicolor, setNaviColor] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const localData = JSON.parse(localStorage.getItem("user-info"));
-
-  // const changeColor = () => {
-  //   if (window.scrollY >= 10) {
-  //     setNaviColor(true);
-  //   } else {
-  //     setNaviColor(false);
-  //   }
-  // };
-  // window.addEventListener("scroll", changeColor);
-  const handleNavbarHide = () => {
-    // Close the navbar toggle when it hides
-    setNavCollapse(false);
-    // history.push('/');
-  };
-
-  const handleToggleClick = () => {
-    // Toggle between true and false on each click
-    setNavCollapse((prevNavCollapse) => !prevNavCollapse);
-  };
-
+  useEffect(() => {
+    setExpanded(false);
+  }, [location.pathname]);
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
+  };
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
     if (searchValue.trim() !== "") {
       navigate(`/search/${searchValue}`);
+      setSearchValue("");
     } else {
-      navigate(`/search`);
+      setExpanded((prevExpanded) => !prevExpanded);
+    }
+  };
+  const handleSearchIconClick = () => {
+    if (searchValue.trim() !== "") {
+      navigate(`/search/${searchValue}`);
+      setSearchValue("");
+    } else {
+      setExpanded((prevExpanded) => !prevExpanded);
     }
   };
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-      <Navbar.Brand as={Link} to="/">
+    <Navbar
+      bg="dark"
+      variant="dark"
+      expand="lg"
+      fixed="top"
+      expanded={expanded}
+      onToggle={(isExpanded) => setExpanded(isExpanded)}
+    >
+      <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
         Amazon Music
       </Navbar.Brand>
-      <Navbar.Toggle
-        aria-controls="basic-navbar-nav"
-        onClick={handleToggleClick}
-      />
-      <Navbar.Collapse
-        className={navCollapse}
-        onClick={handleNavbarHide}
-      >
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse>
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">
+          <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>
             <GoHome className="nav-icons" /> Home
           </Nav.Link>
           <Nav.Link
             as={Link}
             to={localData?.status === "success" ? `/podCasts` : `/aleartPage`}
+            onClick={() => setExpanded(false)}
           >
             <MdPodcasts className="nav-icons" /> Podcasts
           </Nav.Link>
-          <Nav.Link as={Link} to="/library">
+          <Nav.Link as={Link} to="/library" onClick={() => setExpanded(false)}>
             <FaHeadphonesAlt className="nav-icons" /> Library
           </Nav.Link>
         </Nav>
         <div className="ml-auto d-flex align-items-center main-search">
-          <Link
-            to={localData?.status === "success" ? `/search` : `/aleartPage`}
-            className="d-flex align-items-center"
-          >
+          <Form onSubmit={handleSearchSubmit}>
             <FormControl
               type="text"
               placeholder="Search"
@@ -81,8 +75,12 @@ const NavigationBar = () => {
               value={searchValue}
               onChange={handleSearchChange}
             />
-            <BsSearch className="search-icon" />
-          </Link>
+          </Form>
+          <BsSearch
+            id="search-icon"
+            className="search-icon"
+            onClick={handleSearchIconClick}
+          />
           <UserIcon />
         </div>
       </Navbar.Collapse>
