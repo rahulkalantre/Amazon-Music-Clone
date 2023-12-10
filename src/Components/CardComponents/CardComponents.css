@@ -21,6 +21,9 @@
   margin-bottom: 10px;
 }
 
+.main-scroll {
+  overflow-x: scroll;
+}
 .carousel .song-card img {
   object-fit: cover;
   border-radius: 10px;

@@ -9,6 +9,7 @@ import UserIcon from "../UserIcon/UserIcon";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavigationBar/NavigationBar.css";
 const NavigationBar = () => {
+  const [navCollapse, setNavCollapse] = useState(false);
   const [navicolor, setNaviColor] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
@@ -22,7 +23,17 @@ const NavigationBar = () => {
   //   }
   // };
   // window.addEventListener("scroll", changeColor);
-  
+  const handleNavbarHide = () => {
+    // Close the navbar toggle when it hides
+    setNavCollapse(false);
+    // history.push('/');
+  };
+
+  const handleToggleClick = () => {
+    // Toggle between true and false on each click
+    setNavCollapse((prevNavCollapse) => !prevNavCollapse);
+  };
+
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
     if (searchValue.trim() !== "") {
@@ -36,8 +47,14 @@ const NavigationBar = () => {
       <Navbar.Brand as={Link} to="/">
         Amazon Music
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse className={navicolor ? "basic-navbar-nav-bg" : ""}>
+      <Navbar.Toggle
+        aria-controls="basic-navbar-nav"
+        onClick={handleToggleClick}
+      />
+      <Navbar.Collapse
+        className={navCollapse}
+        onClick={handleNavbarHide}
+      >
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
             <GoHome className="nav-icons" /> Home
