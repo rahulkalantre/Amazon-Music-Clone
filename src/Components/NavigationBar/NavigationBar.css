@@ -6,47 +6,59 @@
   padding: 0px;
   margin: 0px;
 }
+
 .navbar-bg {
   background-color: transparent;
 }
+
 .navbar-brand {
   font-size: 35px;
   font-weight: bold;
 }
+
 .navbar-nav .nav-link {
   color: white;
   font-weight: bold;
 }
+
 .navbar-nav .nav-link.active {
   color: #FF9900;
 }
+
 .navbar-form .form-control {
   border-color: #FF9900;
   color: white;
   background-color: #333;
 }
+
 .navbar-nav .nav-item .dropdown-menu {
   background-color: #333;
 }
+
 .navbar-nav .nav-item .dropdown-item {
   color: white;
 }
+
 .navbar-nav .nav-item .dropdown-item:hover {
   background-color: #FF9900;
   color: black;
 }
+
 .nav-icons {
   font-size: 2.5rem;
 }
+
 .navbar-collapse {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .search-box {
   display: flex;
   align-items: center;
 }
+
 .search-icon {
   height: 36px;
   width: 35px;
@@ -56,6 +68,7 @@
   border-radius: 0px 15px 15px 0px;
   padding-right: 10px;
 }
+
 .search-input {
   border: none;
   border-radius: 15px 0px 0px 15px;
