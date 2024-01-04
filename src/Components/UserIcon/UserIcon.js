@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BiUserCircle } from "react-icons/bi";
+// import { BiUserCircle } from "react-icons/bi";
+import { FaUserCircle } from "react-icons/fa";
 import "./UserIcon.css";
 
 const Dropdown = () => {
@@ -13,7 +14,7 @@ const Dropdown = () => {
 
   return (
     <div className="custom-dropdown">
-      <BiUserCircle className="nav-icons" onClick={toggleDropdown} />
+      <FaUserCircle className="nav-user-icon" onClick={toggleDropdown} />
       {isDropdownOpen && (
         <div className="dropdown-content">
           {localData?.status !== "success" && (

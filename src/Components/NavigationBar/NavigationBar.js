@@ -6,8 +6,11 @@ import { BsSearch } from "react-icons/bs";
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import UserIcon from "../UserIcon/UserIcon";
+import amazonmusic from "../../Assets/amazonmusic";
+import logo from "../../Assets/Amazon-Music-Logo.png"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavigationBar/NavigationBar.css";
+
 const NavigationBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [expanded, setExpanded] = useState(false);
@@ -47,23 +50,23 @@ const NavigationBar = () => {
       onToggle={(isExpanded) => setExpanded(isExpanded)}
     >
       <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
-        Amazon Music
+        <img src={logo} alt="Amazon-Music-Logo" className="amazon-music-logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>
-            <GoHome className="nav-icons" /> Home
+            <GoHome className="nav-icons" /> <span className="nva-icon-text">HOME</span>
           </Nav.Link>
           <Nav.Link
             as={Link}
             to={localData?.status === "success" ? `/podCasts` : `/aleartPage`}
             onClick={() => setExpanded(false)}
           >
-            <MdPodcasts className="nav-icons" /> Podcasts
+            <MdPodcasts className="nav-icons" /> <span className="nva-icon-text">PODCASTS</span>
           </Nav.Link>
           <Nav.Link as={Link} to="/library" onClick={() => setExpanded(false)}>
-            <FaHeadphonesAlt className="nav-icons" /> Library
+            <FaHeadphonesAlt className="nav-icons" /> <span className="nva-icon-text">LIBRARY</span>
           </Nav.Link>
         </Nav>
         <div className="ml-auto d-flex align-items-center main-search">
