@@ -51,9 +51,13 @@
 }
 
 .nav-icons {
-  font-size: 26px;
+  font-size: 30px;
   margin-left: 30px;
-  margin-top: -3;
+  margin-top: -3 !important;
+}
+
+.nva-icon-text {
+  margin-left: 10px;
 }
 
 .navbar-collapse {
@@ -91,25 +95,32 @@
   text-decoration: none;
   margin-left: 20px;
 }
-/* To Fix Header */
+
 div.right-div .dropdown-menu.show {
   margin-left: -170px !important;
 }
+
 @media (max-width: 768px) {
+
   .navbar {
     flex-direction: row;
     align-items: center;
+    height: 65px;
+    background-color: #333;
   }
+
   .navbar-brand {
     font-size: 28px;
   }
+
   .navbar-nav .nav-link {
     font-size: 16px;
   }
+
   .nav-icons {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-  
+
   .navbar-collapse {
     display: flex;
     flex-direction: column !important;
@@ -124,5 +135,63 @@ div.right-div .dropdown-menu.show {
     width: 32px;
     padding-right: 8px;
     margin-right: 10px;
+  }
+
+  .amazon-music-logo {
+    width: 70px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: -5px;
+  }
+
+  .navbar-nav{
+    flex-direction: row !important;
+  }
+
+  .linkA{
+    margin-left: -27px;
+  }
+
+  .searchIcon{
+    margin-top: 12px;
+    margin-right: 10px;
+  }
+
+  .resposive-search {
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  .resposive-search-bar {
+    border: none;
+    background-color: #333;
+    color: #333;
+    width: 200px;
+    /* opacity: 0; */
+  }
+
+  .resposive-search-bar::placeholder {
+    color: white;
+    opacity: 2;
+  }
+
+  .cancel-button {
+    position: absolute;
+    top: 32%;
+    right: 0px;
+    background: none;
+    color: white;
+    font-size: 14px;
+    opacity: 0px;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  .nav-user-icon{
+    margin-top: 10px;
+    font-size: 1.7rem;
   }
 }
