@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
-import { BsPlayCircle } from "react-icons/bs";
 import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
 import { TrendingSongsFunction } from "../../Data/ApiFunctions";
 import "../TrendingSongs/TrendingSongs.css";
@@ -11,13 +9,9 @@ const TrendingSongs = () => {
   const [data, setData] = useState([]);
 
   const {
-    playSong,
-    songDetails,
-    isPlaying,
     setSongDetails,
     setIsPlaying,
     setPlaySong,
-    currentindex,
     setCurrentIndex,
   } = useMusicPlayer();
 
@@ -30,7 +24,6 @@ const TrendingSongs = () => {
     <div className="trending-songs-title">
       <h2 className="trending-songs-heading">Trending Songs</h2>
     </div>
-      {/* <Slider {...settings}> */}
       <Carousel
         className="trending-songs-carousel"
         showArrows={true} // Show navigation arrows
@@ -68,16 +61,13 @@ const TrendingSongs = () => {
                     className="song-image song-card"
                   />
                 </div>
-                {/* <div className="song-details"> */}
                   <h6 className="trending-song-card-heading">{item?.title}</h6>
                   <p className="description">
                     {item?.artist.map((text) => text?.name).join(", ")}
                   </p>
-                {/* </div> */}
               </div>
             </div>
           ))}
-        {/* </Slider> */}
       </Carousel>
     </>
   );

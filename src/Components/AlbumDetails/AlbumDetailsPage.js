@@ -30,23 +30,8 @@ const AlbumDetailsPage = () => {
             <h6 className="adp-subtitle">PLAYLIST</h6>
             <h1 className="adp-title">{category?.toUpperCase()} SONGS</h1>
             <h5 className="adp-tagline">Curated by Amazon Music</h5>
-            {/* <p className="adp-description">{data?.description}</p> */}
             <br />
             <p className="adp-p-tag">50 SONGS • 3 HOURS AND 27 MINUTES</p>
-            {/* <div className="actions">
-              <button className="adp-play-button">
-                <BsFillPlayFill /> Play
-              </button>
-              <button className="adp-icon-button">
-                <GrFormAdd />
-              </button>
-              <button className="adp-icon-button">
-                <BiSolidShareAlt />
-              </button>
-              <button className="adp-icon-button">
-                <BsThreeDots />
-              </button>
-            </div> */}
           </div>
         </div>
         {data.length > 0 &&
@@ -83,7 +68,6 @@ const AlbumDetailsPage = () => {
                 )}
                 <div className="adp-song-text">
                   <h5>{item?.title}</h5>
-                  {/* <p> Artist : Unknown</p> */}
                 </div>
               </div>
               <div className="adp-song-title">

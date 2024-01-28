@@ -63,9 +63,6 @@ const SongDetailsPage = () => {
             <p>Jasleen Royal, Arijit Singh & Dulquer Salmaan</p>
           </div>
         </div>
-        {/* <div className="sdp-additional-content">
-         
-        </div> */}
         <div className="sdp-heading">Heeriye (feat. Arijit Singh)</div>
         <div className="sdp-duration">Duration</div>
         <div className="sdp-icons">

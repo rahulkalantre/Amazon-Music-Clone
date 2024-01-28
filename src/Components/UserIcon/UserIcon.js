@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// import { BiUserCircle } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import "./UserIcon.css";
 
@@ -34,9 +33,6 @@ const Dropdown = () => {
               </div>
             </Link>
           )}
-          {/* <Link to="/subscriptions">
-            <div className="menu-item">Subscriptions</div>
-          </Link> */}
         </div>
       )}
     </div>

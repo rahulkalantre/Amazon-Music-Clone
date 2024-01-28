@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SearchPage from "../SearchBar/SearchPage";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { SuggestionPageFunction } from "../../Data/ApiFunctions";
 import { useMusicPlayer } from "../../Context/MusicPlayerProvider";
@@ -11,12 +10,9 @@ function SuggestionPage() {
   const { query } = useParams();
   const {
     playSong,
-    songDetails,
-    isPlaying,
     setSongDetails,
     setIsPlaying,
     setPlaySong,
-    currentindex,
     setCurrentIndex,
   } = useMusicPlayer();
 
@@ -27,9 +23,6 @@ function SuggestionPage() {
   return (
     <>
       <h2 className="suggestion-heading"> Songs Search By Title </h2>
-      {query.trim() === "" ? (
-        <SearchPage />
-      ) : (
         <div className="grid-containerr">
           {data?.length > 0 ? (
             data?.map((item, index) => (
@@ -58,7 +51,6 @@ function SuggestionPage() {
             <p className="error-message">No Results Found</p>
           )}
         </div>
-      )}
       {playSong && <MusicPlayer />}
     </>
   );

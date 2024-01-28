@@ -5,9 +5,7 @@ import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
 import HomePage from "./Components/HomePage/HomePage";
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
-import SearchPage from "./Components/SearchBar/SearchPage";
 import SuggetionPage from "./Components/SuggetionPage/SuggetionPage";
-
 import SongsSeeAll from "./Components/SeeAllComponents/SongsSeeAll";
 import AleartPage from "./Components/AleartPage/AleartPage";
 import PodCasts from "./Components/PodCasts/PodCasts";
